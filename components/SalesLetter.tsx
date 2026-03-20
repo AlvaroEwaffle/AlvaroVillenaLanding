@@ -181,7 +181,7 @@ export default function SalesLetter() {
           >
             Llevo más de 10 años en gestión de producto.
             <br />
-            Tengo 4 negocios corriendo al mismo tiempo.
+            Tengo 2 negocios corriendo (Ewaffle y Fidelidapp), además de compartir aprendizajes a través de mis asesorías.
             <br />
             Y lo que encontré: las empresas no necesitan más tecnología,
             <br />
@@ -189,7 +189,12 @@ export default function SalesLetter() {
           </p>
 
           <div className={`transition-opacity duration-500 ease-out ${typewriterDone ? 'opacity-100' : 'opacity-0'}`}>
-            <ScrollToCta />
+            <div className="mt-6">
+              <CalendlyButton
+                text="Agendar una conversación"
+                className="inline-flex items-center gap-2 py-3 px-6 bg-accent hover:bg-accent-hover text-white font-semibold text-base rounded-lg transition-colors"
+              />
+            </div>
           </div>
         </section>
 
@@ -216,19 +221,19 @@ export default function SalesLetter() {
           </motion.h2>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            Estudié ingeniería industrial en la U de Chile. Empecé en empresas grandes: PepsiCo, LATAM Airlines. Ahí aprendí que los sistemas que funcionan no son los más sofisticados, son los más claros.
+            Estudié ingeniería industrial en la Universidad de Concepción. Empecé en empresas grandes: PepsiCo, LATAM Airlines. Ahí aprendí que los sistemas que funcionan no son los más sofisticados, son los más claros.
           </motion.p>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            En 2019 empecé a trabajar con Toptal. Acceso a proyectos con empresas de todo el mundo. Caché algo que no esperaba: los problemas de producto en Silicon Valley son casi idénticos a los de una startup chilena que quiere crecer.
+            En 2019 empecé a trabajar con Toptal, la red de freelancers más importante a nivel global. Caché algo que no esperaba: los problemas de producto en Silicon Valley son casi idénticos a los de una startup chilena que quiere crecer.
           </motion.p>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            Mientras tanto, construí mis propios negocios. Hoy tengo cuatro: trabajo como PM senior para clientes globales vía Toptal, tengo Ewaffle (e-learning B2B), Fidelidapp (SaaS de fidelización), y VilleLab (consultoría de IA y PM).
+            Mientras tanto, construí mis propios negocios. Hoy tengo Ewaffle (e-learning B2B) y Fidelidapp (SaaS de fidelización), además de compartir lo que aprendo a través de mis asesorías.
           </motion.p>
 
           <motion.p className="font-semibold text-white" variants={fadeUp}>
-            Lo que aprendí corriendo 4 negocios al mismo tiempo: el problema no es la falta de ideas. Es la falta de sistemas para ejecutarlas.
+            Lo que aprendí construyendo productos y negocios propios: el problema no es la falta de ideas. Es la falta de sistemas para ejecutarlas.
           </motion.p>
 
           <motion.p className="text-white/80" variants={fadeUp}>
@@ -281,11 +286,11 @@ export default function SalesLetter() {
             className="text-subheadline text-white"
             variants={fadeUp}
           >
-            Algunas cosas que probablemente no te han dicho
+            Y aquí te lo cuento sin maquillaje
           </motion.h2>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            Llevo años viendo los mismos patrones. En empresas grandes y en startups. En Chile y en el extranjero. Algunas cosas que la mayoría no dice en voz alta:
+            Llevo más de 10 años construyendo software y gestionando productos digitales. Esa es la base. El desarrollo de software y la gestión de producto son lo que hace que las cosas funcionen de verdad. La IA llegó después — y es una herramienta brutal, pero solo si ya tienes los fundamentos claros.
           </motion.p>
 
           <motion.div className="space-y-4 pl-1" variants={fadeUp}>
@@ -294,7 +299,7 @@ export default function SalesLetter() {
                 &rarr;
               </span>
               <p className="text-white/80">
-                Por qué los proyectos de IA más caros suelen fracasar antes que los más simples — y cómo evitar ese error desde el primer día
+                Sin un proceso de producto claro, ninguna herramienta te salva — ni la IA más cara del mercado
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -302,7 +307,7 @@ export default function SalesLetter() {
                 &rarr;
               </span>
               <p className="text-white/80">
-                El error que comete el 80% de los equipos cuando implementan herramientas nuevas: compran tecnología antes de tener claridad en el proceso
+                El 80% de los equipos compra tecnología antes de tener claridad en su proceso. Primero el sistema, después la herramienta
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -310,7 +315,7 @@ export default function SalesLetter() {
                 &rarr;
               </span>
               <p className="text-white/80">
-                Qué tienen en común las empresas de LATAM que escalan rápido — no es el presupuesto, ni el equipo, ni la tecnología
+                Las empresas de LATAM que escalan rápido no tienen más presupuesto ni más gente — tienen mejor estructura de producto y ciclos de desarrollo más cortos
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -318,13 +323,13 @@ export default function SalesLetter() {
                 &rarr;
               </span>
               <p className="text-white/80">
-                Por qué contratar más personas muchas veces hace tu operación más lenta, no más rápida — y qué hacer en cambio
+                La IA es la evolución natural de todo esto. Si ya sabes construir y gestionar productos, la IA te hace 10x más efectivo. Si no, solo automatiza el desorden
               </p>
             </div>
           </motion.div>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            Estas son las conversaciones que tengo cada semana con clientes, emprendedores y equipos de producto en toda la región.
+            Estas son las conversaciones que tengo cada semana con emprendedores y equipos de producto en toda la región.
           </motion.p>
         </motion.section>
 
@@ -346,25 +351,25 @@ export default function SalesLetter() {
           </motion.h2>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            No te voy a contar casos en tercera persona como si fueran de otra empresa. Estos son proyectos donde estuve adentro:
+            No te voy a contar casos en tercera persona como si fueran de otra empresa. Estos son proyectos donde estuve adentro, liderando equipos y sacando producto:
           </motion.p>
 
           <motion.div className="border-l-4 border-accent pl-5 py-2 space-y-2 mb-6" variants={fadeUp}>
-            <h3 className="text-white font-semibold">Cervecería Puchacay</h3>
-            <p className="text-white/80 text-sm">Llegaron con una web espectacular y cero ventas online. Cuatro meses, ni un solo lead desde el sitio. Lo primero que hice fue ignorar el diseño y mirar los números: el embudo estaba roto desde el inicio. Reestructuramos el flujo completo — propuesta de valor en los primeros 5 segundos, CTA visible, seguimiento automatizado. En 3 meses, sus ventas online se duplicaron.</p>
-            <p className="text-accent text-sm font-medium">+120% ventas online en 3 meses</p>
+            <h3 className="text-white font-semibold">LATAM Airlines — Sistema de Revenue</h3>
+            <p className="text-white/80 text-sm">MVP en 4 meses más releases mensuales de features. Lideré un equipo de 9 devs + BA + PO usando Scrum, Kanban y XP. Stack: Google Cloud, Kubernetes, Angular, microservicios Spring Boot. Fuimos pioneros en infraestructura cloud, pipelines CI/CD y microservicios dentro de la organización.</p>
+            <p className="text-accent text-sm font-medium">MVP en 4 meses · equipo de 12 · pioneros en cloud y microservicios</p>
           </motion.div>
 
           <motion.div className="border-l-4 border-accent pl-5 py-2 space-y-2 mb-6" variants={fadeUp}>
-            <h3 className="text-white font-semibold">Fidelidapp</h3>
-            <p className="text-white/80 text-sm">Con Fidelidapp fue el problema inverso: tenían un producto increíble y el 60% de los usuarios nuevos nunca llegaba al &ldquo;momento aha&rdquo;. El onboarding era un desastre. Rediseñamos el flujo de activación aplicando ciclos cortos y feedback rápido. Resultado: 80% menos tickets de soporte, el doble de activaciones en el primer mes.</p>
-            <p className="text-accent text-sm font-medium">-80% soporte manual · 2x activaciones</p>
+            <h3 className="text-white font-semibold">Pepsico — Sistemas Comerciales SAFe</h3>
+            <p className="text-white/80 text-sm">Mejoramos el tiempo de desarrollo en un 50% en el Departamento de Innovación. Implementé una estructura de gestión de programa basada en SAFe con múltiples equipos. Hicimos visible el trabajo cross-team y mejoramos la gestión de dependencias y riesgos.</p>
+            <p className="text-accent text-sm font-medium">-50% tiempo de desarrollo · SAFe multi-equipo · gestión de dependencias</p>
           </motion.div>
 
           <motion.div className="border-l-4 border-accent pl-5 py-2 space-y-2 mb-6" variants={fadeUp}>
-            <h3 className="text-white font-semibold">Cliente Toptal — equipo de producto</h3>
-            <p className="text-white/80 text-sm">Un equipo que llegó con 40 features en el backlog, ingeniería quemada y sin tracción visible. Aplicamos el mismo método: diagnosticar primero, construir en ciclos de 2-4 semanas, medir todo. En 12 semanas entregamos las 5 features que importaban de verdad. El resto quedó para después. O para nunca.</p>
-            <p className="text-accent text-sm font-medium">12 semanas · de parálisis a tracción real</p>
+            <h3 className="text-white font-semibold">Conexión Industrial — Universidad de Concepción</h3>
+            <p className="text-white/80 text-sm">Plataforma B2B a medida para el Centro para la Industria 4.0 (C4i) de la Universidad de Concepción. Marketplace digital que conecta 124+ empresas en 35 sectores industriales de la región del Biobío. Perfiles verificados, matching automatizado y tracking de certificaciones.</p>
+            <p className="text-accent text-sm font-medium">124+ empresas · 35 sectores · marketplace B2B industrial</p>
           </motion.div>
         </motion.section>
 
@@ -430,19 +435,19 @@ export default function SalesLetter() {
           {/* Testimonials */}
           <div className="space-y-8">
             <Testimonial
-              quote="Después de implementar los cambios que Álvaro recomendó, nuestras ventas online subieron un 120% en 3 meses. No fue magia, fue estructura."
-              author="Cervecería Puchacay"
-              role="Ecommerce & Taproom"
+              quote="Trabajar con Álvaro en nuestra plataforma de vehículos conectados fue un cambio total. Trajo estructura a nuestro proceso de producto y nos ayudó a lanzar más rápido sin sacrificar calidad."
+              author="Jooycar"
+              role="Insurtech & Vehículos Conectados"
             />
             <Testimonial
-              quote="No era solo una web. Era un sistema completo de conversión. Eso es lo que marcó la diferencia con lo que teníamos antes."
-              author="Ewaffle"
-              role="Plataforma de experiencias"
+              quote="Álvaro nos ayudó a repensar cómo estaba estructurada nuestra plataforma IoT desde el punto de vista de producto. Su enfoque en priorización y ciclos de desarrollo hizo que nuestro equipo de ingeniería fuera mucho más efectivo."
+              author="We Techs"
+              role="Plataforma IoT & Gestión de Agua"
             />
             <Testimonial
-              quote="Redujimos el soporte manual en un 80% con la plataforma que construyó. El onboarding ahora funciona solo."
-              author="Fidelidapp"
-              role="SaaS de fidelización"
+              quote="Necesitábamos a alguien que entendiera tanto el lado técnico como el de negocio del desarrollo de productos digitales. Álvaro entregó una hoja de ruta clara que aceleró el lanzamiento de nuestra plataforma."
+              author="Progreso"
+              role="Servicios Financieros & Plataforma Digital"
             />
           </div>
 
@@ -450,11 +455,11 @@ export default function SalesLetter() {
           <motion.div variants={fadeUp}>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 py-6 border-t border-b border-white/10">
               {[
-                'Puchacay',
-                'Ewaffle',
-                'Fidelidapp',
-                'Samy Studio',
-                'Defensa Total',
+                'LATAM Airlines',
+                'Pepsico',
+                'Jooycar',
+                'We Techs',
+                'Progreso',
               ].map((name) => (
                 <span
                   key={name}
