@@ -2,7 +2,7 @@
 
 import { trackEvent } from './EmailCaptureForm';
 
-const CALENDLY_URL = 'https://capu.villelab.com/schedule/reunion-descubrimiento-con-alvaro';
+const CALENDLY_URL = 'https://capu.villelab.com/schedule/reunion-descubrimiento-con-alvaro/';
 
 interface CalendlyButtonProps {
   text?: string;

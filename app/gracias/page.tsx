@@ -5,15 +5,15 @@ import GraciasContent from '@/components/GraciasContent';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alvarovillena.cl';
 
 export const metadata: Metadata = {
-  title: 'Tu checklist de diagnóstico',
+  title: 'Gracias por suscribirte',
   description:
-    'Los 27 puntos que tu web necesita para dejar de decorar y empezar a vender. Agenda un diagnóstico gratuito.',
+    'Gracias por suscribirte al newsletter de Álvaro Villena. Si después quieres abrir una reunión, primero pasa por el diagnostico de operaciones con IA.',
   alternates: { canonical: `${siteUrl}/gracias` },
   robots: { index: false, follow: false },
   openGraph: {
-    title: 'Tu checklist de diagnóstico — Álvaro Villena',
+    title: 'Gracias por suscribirte — Álvaro Villena',
     description:
-      'Los 27 puntos que tu web necesita para dejar de decorar y empezar a vender.',
+      'Newsletter confirmado. Si luego quieres abrir una reunión, primero pasa por el diagnostico de operaciones con IA.',
     url: `${siteUrl}/gracias`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },

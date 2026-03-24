@@ -70,7 +70,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Álvaro Villena — Webs que venden",
+        alt: "Álvaro Villena — PM e implementación de IA para LATAM",
       },
       { url: "/icono.png", width: 512, height: 512, alt: "Álvaro Villena" },
     ],
@@ -191,9 +191,9 @@ const structuredData = {
       "@id": `${siteUrl}/#service`,
       name: "PM & AI Consulting para LATAM",
       description:
-        "Ayudo a empresas y emprendedores de LATAM a implementar IA y mejorar su gestión de producto. Newsletter semanal + sesiones de consultoría.",
+        "Diagnóstico y diseño inicial para empresas y emprendedores de LATAM que quieren operar mejor con IA.",
       provider: { "@id": `${siteUrl}/#person` },
-      serviceType: "Web Consulting & Development",
+      serviceType: "AI Operations Diagnosis & Product Consulting",
       areaServed: {
         "@type": "Place",
         name: "Chile y Latinoamérica",
@@ -208,16 +208,16 @@ const structuredData = {
               "@type": "Service",
               name: "Diagnóstico Digital Gratuito",
               description:
-                "Sesión de 30 minutos donde revisamos tu web en vivo y te entregamos un plan concreto.",
+                "Filtro de fit y diagnóstico inicial para detectar el mejor punto de partida en operaciones, propuestas, follow-up o sistemas con IA.",
             },
           },
           {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Guía de Diagnóstico Digital: 27 Puntos",
+              name: "Newsletter semanal",
               description:
-                "Los 27 puntos que tu web necesita cumplir para convertir visitantes en clientes.",
+                "Una táctica práctica de IA o PM por semana para operar mejor tu negocio.",
             },
           },
         ],

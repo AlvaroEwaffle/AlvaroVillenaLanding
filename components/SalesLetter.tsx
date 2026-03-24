@@ -4,11 +4,11 @@ import { useState, useCallback, useEffect, Fragment } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import ToptalBadge from './ToptalBadge';
 import EmailCaptureForm, { trackEvent } from './EmailCaptureForm';
-import CalendlyButton from './CalendlyButton';
 import { getLenis } from '@/lib/lenis';
+import { VILO_DIAGNOSIS_ROUTE } from '@/lib/vilo';
 
 /* ─── Animation variants ─── */
 const fadeUp: Variants = {
@@ -190,10 +190,13 @@ export default function SalesLetter() {
 
           <div className={`transition-opacity duration-500 ease-out ${typewriterDone ? 'opacity-100' : 'opacity-0'}`}>
             <div className="mt-6">
-              <CalendlyButton
-                text="Agendar una conversación"
-                className="inline-flex items-center gap-2 py-3 px-6 bg-accent hover:bg-accent-hover text-white font-semibold text-base rounded-lg transition-colors"
-              />
+              <Link
+                href={VILO_DIAGNOSIS_ROUTE}
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+              >
+                Ver si este diagnostico calza con tu negocio
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>
@@ -221,7 +224,7 @@ export default function SalesLetter() {
           </motion.h2>
 
           <motion.p className="text-white/80" variants={fadeUp}>
-            Estudié ingeniería industrial en la Universidad de Concepción. Empecé en empresas grandes: PepsiCo, LATAM Airlines. Ahí aprendí que los sistemas que funcionan no son los más sofisticados, son los más claros.
+            Estudié ingeniería industrial en la Universidad de Concepción. He trabajado con empresas grandes -PepsiCo, LATAM Airlines, CMPC- y con startups -Jooycar, We Techs, Progreso-, donde aprendí que no existe un sistema que funcione para todos; funcionan los que se adaptan mejor a tus necesidades.
           </motion.p>
 
           <motion.p className="text-white/80" variants={fadeUp}>
@@ -392,23 +395,29 @@ export default function SalesLetter() {
               Elige cómo prefieres conectar.
             </p>
             <div className="grid sm:grid-cols-2 gap-8">
-              {/* Left: Email capture */}
+              {/* Left: Diagnosis-first */}
               <div>
+                <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-3">Diagnostico de Operaciones con IA</p>
+                <p className="text-white/60 text-sm mb-4 leading-relaxed">
+                  Si veo fit, abrimos una reunión. Si no, te digo el siguiente paso correcto. Prefiero eso a venderte una call que no te sirva.
+                </p>
+                <Link
+                  href={VILO_DIAGNOSIS_ROUTE}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-4 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+                >
+                  Abrir diagnóstico
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              {/* Right: Newsletter */}
+              <div className="sm:border-l sm:border-white/10 sm:pl-8">
                 <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-3">Newsletter semanal</p>
                 <p className="text-white/60 text-sm mb-4 leading-relaxed">
                   Una táctica práctica de IA o PM cada semana. Sin spam. Para emprendedores y equipos que quieren operar mejor.
                 </p>
                 <EmailCaptureForm id="email-capture" ctaText="Suscribirme gratis" />
-              </div>
-              {/* Right: Calendly */}
-              <div className="sm:border-l sm:border-white/10 sm:pl-8">
-                <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-3">Conversación directa</p>
-                <p className="text-white/60 text-sm mb-4 leading-relaxed">
-                  30 minutos. Conversamos sobre tu negocio, tus operaciones y vemos si hay algo concreto donde puedo ayudarte.
-                </p>
-                <CalendlyButton text="Agendar conversación con Álvaro" />
                 <p className="text-sm text-white/40 mt-3 text-center">
-                  Sin compromiso. Sin letra chica.
+                  Bajo compromiso. Alto valor.
                 </p>
               </div>
             </div>
@@ -526,10 +535,16 @@ export default function SalesLetter() {
             Hago calls de descubrimiento para entender tu contexto y ver si hay algo concreto donde puedo ayudarte. Solo trabajo con proyectos donde sé que puedo crear valor real. Si eso te describe, agenda acá.
           </motion.p>
           <motion.div variants={fadeUp}>
-            <CalendlyButton />
+            <Link
+              href={VILO_DIAGNOSIS_ROUTE}
+              className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+            >
+              Ver si califico para el diagnostico
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
           <motion.p className="text-white/40 text-sm" variants={fadeUp}>
-            Sin compromiso. 30 minutos.
+            Agenda protegida: solo se abre si hay fit.
           </motion.p>
           <motion.p className="text-white/40 text-sm mt-2" variants={fadeUp}>
             Mi firma:{' '}

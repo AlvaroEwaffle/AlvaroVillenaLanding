@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import CalendlyButton from './CalendlyButton';
 import { trackEvent } from './EmailCaptureForm';
+import { VILO_DIAGNOSIS_ROUTE } from '@/lib/vilo';
 
 export default function GraciasContent() {
   return (
@@ -43,15 +43,20 @@ export default function GraciasContent() {
         <section className="mb-10 sm:mb-14">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 sm:p-10">
             <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">
-              ¿Quieres conversarlo en vivo?
+              ¿Quieres ir un paso más allá?
             </h2>
             <p className="text-white/50 mb-6 leading-relaxed">
-              30 minutos. Conversamos sobre tu negocio y vemos cómo puedo ayudarte
-              de forma concreta.
+              Si quieres abrir una reunión, primero pasa por el filtro de diagnóstico. Así protegemos tu tiempo y el mío.
             </p>
-            <CalendlyButton />
+            <Link
+              href={VILO_DIAGNOSIS_ROUTE}
+              onClick={() => trackEvent('newsletter_to_vilo_diagnosis')}
+              className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-hover"
+            >
+              Abrir diagnostico de operaciones
+            </Link>
             <p className="text-sm text-white/40 mt-3">
-              Sin compromiso. Sin letra chica.
+              Agenda protegida: solo se abre si hay fit.
             </p>
           </div>
         </section>
