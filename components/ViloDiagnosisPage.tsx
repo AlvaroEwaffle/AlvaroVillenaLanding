@@ -29,53 +29,38 @@ function VslBlock() {
       </div>
       <div className="space-y-3">
         <p className="text-xs uppercase tracking-[0.22em] text-accent/80 font-semibold">
-          Video pendiente de grabar
+          Guion del video
         </p>
-        <h2 className="text-2xl font-semibold text-white">Video de introducción que deberías grabar</h2>
+        <h2 className="text-2xl font-semibold text-white">Lo que deberías decir en el video</h2>
         <p className="max-w-2xl text-white/65 leading-relaxed">
-          Aquí debería ir un video corto, directo y personal. La idea no es vender “IA” en abstracto, sino explicar
-          para quién es este diagnóstico, qué problema resuelve y por qué primero filtras antes de abrir una reunión.
+          Este bloque queda como referencia del mensaje. Cuando grabes el video, aquí se reemplaza por la versión
+          final incrustada.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-[0.9fr,1.1fr]">
-        <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-5">
-          <p className="text-sm font-semibold text-white">Cómo grabarlo</p>
-          <ul className="mt-4 space-y-3 text-sm text-white/60">
-            <li>Duración ideal: 60 a 90 segundos.</li>
-            <li>Formato: horizontal 16:9, cámara fija, plano medio, fondo limpio.</li>
-            <li>Tono: cercano, sobrio, sin hype ni lenguaje técnico innecesario.</li>
-            <li>Objetivo: que la persona entienda si vale la pena llenar el formulario.</li>
-            <li>Cierre: invitar a completar el diagnóstico, no a agendar directo.</li>
-          </ul>
-        </div>
-
-        <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-5">
-          <p className="text-sm font-semibold text-white">Guion sugerido</p>
-          <div className="mt-4 space-y-4 text-sm text-white/65 leading-relaxed">
-            <p>
-              “Hola, soy Álvaro Villena. Trabajo en gestión de producto hace más de 10 años y en los últimos años he
-              estado ayudando a empresas y emprendedores a ordenar mejor sus operaciones con IA.”
-            </p>
-            <p>
-              “Este diagnóstico es para negocios que sienten que algo se está trabando: llegan leads pero no se
-              mueven, el follow-up se enfría, las propuestas salen tarde, o la operación depende demasiado de
-              personas y de WhatsApp.”
-            </p>
-            <p>
-              “No siempre la respuesta es meter más tecnología. A veces el problema es de proceso, otras veces sí
-              conviene automatizar, y muchas veces es una mezcla de ambas. Por eso primero hago esta revisión
-              inicial.”
-            </p>
-            <p>
-              “Si veo que hay buen encaje, te abro una reunión para aterrizar por dónde partir y qué no conviene
-              construir todavía. Si no, igual te queda más claro cuál es el siguiente paso correcto.”
-            </p>
-            <p>
-              “Si te hace sentido, completa el formulario de abajo y veo personalmente si esta conversación puede
-              ayudarte de verdad.”
-            </p>
-          </div>
+      <div className="mt-6 rounded-2xl border border-white/8 bg-white/[0.03] p-5">
+        <div className="space-y-4 text-sm text-white/65 leading-relaxed">
+          <p>
+            “Hola, soy Álvaro Villena. Trabajo en gestión de producto hace más de 10 años y en los últimos años he
+            estado ayudando a empresas y emprendedores a ordenar mejor sus operaciones con IA.”
+          </p>
+          <p>
+            “Este diagnóstico es para negocios que sienten que algo se está trabando: llegan leads pero no se mueven,
+            el follow-up se enfría, las propuestas salen tarde, o la operación depende demasiado de personas y de
+            WhatsApp.”
+          </p>
+          <p>
+            “No siempre la respuesta es meter más tecnología. A veces el problema es de proceso, otras veces sí
+            conviene automatizar, y muchas veces es una mezcla de ambas. Por eso primero hago esta revisión inicial.”
+          </p>
+          <p>
+            “Si veo que hay buen encaje, te abro una reunión para aterrizar por dónde partir y qué no conviene
+            construir todavía. Si no, igual te queda más claro cuál es el siguiente paso correcto.”
+          </p>
+          <p>
+            “Si te hace sentido, completa el formulario de abajo y veo personalmente si esta conversación puede
+            ayudarte de verdad.”
+          </p>
         </div>
       </div>
     </div>
