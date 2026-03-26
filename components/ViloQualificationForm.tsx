@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { trackEvent } from './EmailCaptureForm';
 import {
@@ -13,8 +13,8 @@ import {
 type SubmissionState =
   | { status: 'idle' }
   | { status: 'submitting' }
-  | { status: 'qualified'; score: number; name: string }
-  | { status: 'review'; score: number; name: string }
+  | { status: 'qualified'; scorePercent: number; name: string }
+  | { status: 'review'; scorePercent: number; name: string }
   | { status: 'error'; message: string };
 
 const initialLead: ViloLeadPayload = {
@@ -22,9 +22,10 @@ const initialLead: ViloLeadPayload = {
   email: '',
   phone: '',
   company: '',
-  role: 'founder',
-  biggestBottleneck: 'operaciones',
-  urgency: 'trimestre',
+  role: 'other',
+  biggestBottleneck: 'otro',
+  aiUsageLevel: 'nada',
+  urgency: 'explorando',
   context: '',
 };
 
@@ -38,8 +39,6 @@ export default function ViloQualificationForm() {
   const [honeypot, setHoneypot] = useState('');
   const [submission, setSubmission] = useState<SubmissionState>({ status: 'idle' });
 
-  const assessmentPreview = useMemo(() => assessViloLead(lead), [lead]);
-
   const handleChange = <K extends keyof ViloLeadPayload>(key: K, value: ViloLeadPayload[K]) => {
     setLead((prev) => ({ ...prev, [key]: value }));
   };
@@ -48,7 +47,7 @@ export default function ViloQualificationForm() {
     event.preventDefault();
 
     if (honeypot.trim()) {
-      setSubmission({ status: 'review', score: 0, name: lead.name || 'tu negocio' });
+      setSubmission({ status: 'review', scorePercent: 0, name: lead.name || 'tu negocio' });
       return;
     }
 
@@ -76,16 +75,19 @@ export default function ViloQualificationForm() {
     trackEvent('vilo_diagnosis_submit', {
       qualified: assessment.qualified,
       score: assessment.score,
+      score_percent: assessment.scorePercent,
       bottleneck: lead.biggestBottleneck,
+      ai_usage_level: lead.aiUsageLevel,
+      role: lead.role,
       urgency: lead.urgency,
     });
 
     if (assessment.qualified) {
-      setSubmission({ status: 'qualified', score: assessment.score, name: lead.name });
+      setSubmission({ status: 'qualified', scorePercent: assessment.scorePercent, name: lead.name });
       return;
     }
 
-    setSubmission({ status: 'review', score: assessment.score, name: lead.name });
+    setSubmission({ status: 'review', scorePercent: assessment.scorePercent, name: lead.name });
   };
 
   return (
@@ -174,11 +176,12 @@ export default function ViloQualificationForm() {
               value={lead.role}
               onChange={(event) => handleChange('role', event.target.value)}
             >
-              <option value="founder">Founder / dueño</option>
-              <option value="owner">Socio / owner</option>
-              <option value="ceo">CEO / gerente general</option>
-              <option value="director">Director / líder de área</option>
-              <option value="other">Otro</option>
+              <option value="other">Otro / prefiero no decirlo</option>
+              <option value="founder-owner">Founder / dueño</option>
+              <option value="ceo-gerente">CEO / gerente general</option>
+              <option value="director">Director / gerente de área</option>
+              <option value="lider-equipo">Líder de área o equipo</option>
+              <option value="analista">Analista / coordinación / especialista</option>
             </select>
           </label>
 
@@ -196,20 +199,36 @@ export default function ViloQualificationForm() {
           </label>
         </div>
 
-        <label className="space-y-2 text-sm text-white/75">
-          <span>¿Dónde está hoy el cuello de botella principal?</span>
-          <select
-            className={inputClassName()}
-            value={lead.biggestBottleneck}
-            onChange={(event) => handleChange('biggestBottleneck', event.target.value)}
-          >
-            <option value="operaciones">Operaciones internas</option>
-            <option value="leads">Captura y calificación de leads</option>
-            <option value="follow-up">Follow-up y cierre comercial</option>
-            <option value="propuestas">Propuestas y handoff a delivery</option>
-            <option value="otro">Otro / no lo tengo claro</option>
-          </select>
-        </label>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className="space-y-2 text-sm text-white/75">
+            <span>¿Dónde está hoy el cuello de botella principal?</span>
+            <select
+              className={inputClassName()}
+              value={lead.biggestBottleneck}
+              onChange={(event) => handleChange('biggestBottleneck', event.target.value)}
+            >
+              <option value="otro">Otro / no lo tengo claro</option>
+              <option value="operaciones">Operaciones internas</option>
+              <option value="leads">Captura y calificación de leads</option>
+              <option value="follow-up">Follow-up y cierre comercial</option>
+              <option value="propuestas">Propuestas y handoff a delivery</option>
+            </select>
+          </label>
+
+          <label className="space-y-2 text-sm text-white/75">
+            <span>¿Cuál dirías que es el nivel de uso de IA hoy en tu equipo?</span>
+            <select
+              className={inputClassName()}
+              value={lead.aiUsageLevel}
+              onChange={(event) => handleChange('aiUsageLevel', event.target.value)}
+            >
+              <option value="nada">No la usamos hoy</option>
+              <option value="pruebas-aisladas">Hay pruebas aisladas</option>
+              <option value="uso-equipo">Ya se usa en algunas tareas del equipo</option>
+              <option value="procesos-clave">Ya impacta procesos clave</option>
+            </select>
+          </label>
+        </div>
 
         <label className="space-y-2 text-sm text-white/75">
           <span>Cuéntame brevemente qué se está trabando hoy y qué te gustaría cambiar</span>
@@ -240,8 +259,8 @@ export default function ViloQualificationForm() {
             {submission.name}, sí hace sentido abrir la reunión
           </h3>
           <p className="mt-2 text-white/70 leading-relaxed">
-            Tu score fue {submission.score}. La siguiente conversación es para hacer el match design: dónde partir,
-            qué no construir todavía y cuál sería el primer sistema con impacto real.
+            Tu score fue {submission.scorePercent}%. La siguiente conversación es para hacer el match design: dónde
+            partir, qué no construir todavía y cuál sería el primer sistema con impacto real.
           </p>
           <a
             href={VILO_SCHEDULING_URL}
@@ -263,8 +282,8 @@ export default function ViloQualificationForm() {
             Quedaste guardado para revisión manual
           </h3>
           <p className="mt-2 text-white/65 leading-relaxed">
-            Tu score fue {submission.score}. Prefiero revisar esto con calma antes de abrir una reunión 1:1. Si veo
-            fit, te escribiré con el siguiente paso correcto.
+            Tu score fue {submission.scorePercent}%. Prefiero revisar esto con calma antes de abrir una reunión 1:1.
+            Si veo fit, te escribiré con el siguiente paso correcto.
           </p>
           <p className="mt-3 text-sm text-white/45">
             Si quieres seguir mirando, puedes volver al inicio o explorar más sobre cómo trabajo.

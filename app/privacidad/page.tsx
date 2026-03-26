@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alvarovillena.cl';
 export const metadata: Metadata = {
   title: 'Política de Privacidad',
   description:
-    'Política de privacidad de Álvaro Villena. Cómo tratamos tus datos (nombre, email) en la guía de diagnóstico digital y servicios de consultoría.',
+    'Política de privacidad de Álvaro Villena. Cómo tratamos tus datos en el diagnóstico de operaciones con IA y en servicios de consultoría.',
   alternates: { canonical: `${siteUrl}/privacidad` },
   robots: { index: true, follow: true },
 };

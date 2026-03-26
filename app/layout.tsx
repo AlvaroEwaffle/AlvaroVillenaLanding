@@ -25,23 +25,23 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Álvaro Villena | PM & IA para LATAM",
+    default: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
     template: "%s | Álvaro Villena",
   },
   description:
-    "PM Top 3% en Toptal. Fundador de 4 negocios. Ayudo a empresas y emprendedores de LATAM a implementar IA y mejorar su gestión de producto.",
+    "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
   keywords: [
-    "PM LATAM",
-    "gestión de producto Chile",
+    "operaciones con IA",
+    "mejora de procesos chile",
+    "consultor operaciones chile",
     "consultoría IA LATAM",
     "implementar IA empresa",
-    "Agile PM Chile",
-    "Toptal PM LATAM",
+    "diagnóstico de operaciones",
+    "automatización para negocios",
     "VilleLab",
     "Álvaro Villena",
-    "product management Santiago",
+    "sistemas para negocios",
     "IA para emprendedores LATAM",
-    "operaciones con IA",
   ],
   authors: [{ name: "Álvaro Villena", url: siteUrl }],
   creator: "Álvaro Villena",
@@ -62,24 +62,24 @@ export const metadata: Metadata = {
     locale: "es_CL",
     url: siteUrl,
     siteName: "Álvaro Villena",
-    title: "Álvaro Villena | PM & IA para LATAM",
+    title: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
     description:
-      "PM Top 3% en Toptal. Fundador de 4 negocios. Ayudo a empresas y emprendedores de LATAM a implementar IA y mejorar su gestión de producto.",
+      "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Álvaro Villena — PM e implementación de IA para LATAM",
+        alt: "Álvaro Villena — operaciones, sistemas e IA para negocios",
       },
       { url: "/icono.png", width: 512, height: 512, alt: "Álvaro Villena" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Álvaro Villena | PM & IA para LATAM",
+    title: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
     description:
-      "PM Top 3% Toptal. Emprendedor. Te ayudo a operar tu negocio con IA.",
+      "Ayudo a empresas y emprendedores a ordenar su operación y usar IA donde sí genera impacto.",
     creator: "@chokovillena",
     images: ["/og-image.jpg"],
   },
@@ -115,9 +115,9 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Álvaro Villena | PM & IA para LATAM",
+      name: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
       description:
-        "PM Top 3% en Toptal. Fundador de 4 negocios. Ayudo a empresas y emprendedores de LATAM a implementar IA y mejorar su gestión de producto.",
+        "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
       inLanguage: "es",
       publisher: { "@id": `${siteUrl}/#person` },
     },
@@ -125,9 +125,9 @@ const structuredData = {
       "@type": "WebPage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: "Álvaro Villena | PM & IA para LATAM",
+      name: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
       description:
-        "PM Top 3% en Toptal. Fundador de 4 negocios. Ayudo a empresas y emprendedores de LATAM a implementar IA y mejorar su gestión de producto.",
+        "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#person` },
       inLanguage: "es",
@@ -139,9 +139,9 @@ const structuredData = {
       name: "Álvaro Villena",
       url: siteUrl,
       image: `${siteUrl}/gallery/StandingLookingAtCamera.JPG`,
-      jobTitle: "Agile PM & AI Consultant | Top 3% Toptal",
+      jobTitle: "Consultor en operaciones, sistemas e implementación de IA",
       description:
-        "PM senior Top 3% en Toptal. Fundador de 4 negocios en LATAM. Especialista en gestión de producto, implementación de IA y sistemas operacionales para empresas y emprendedores.",
+        "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA de forma práctica.",
       knowsAbout: [
         "Agile Project Management",
         "Product Management",
@@ -189,35 +189,26 @@ const structuredData = {
     {
       "@type": "Service",
       "@id": `${siteUrl}/#service`,
-      name: "PM & AI Consulting para LATAM",
+      name: "Diagnóstico de Operaciones con IA",
       description:
-        "Diagnóstico y diseño inicial para empresas y emprendedores de LATAM que quieren operar mejor con IA.",
+        "Diagnóstico y diseño inicial para empresas y emprendedores que quieren ordenar su operación y usar IA donde realmente hace sentido.",
       provider: { "@id": `${siteUrl}/#person` },
-      serviceType: "AI Operations Diagnosis & Product Consulting",
+      serviceType: "AI Operations Diagnosis & Business Systems Consulting",
       areaServed: {
         "@type": "Place",
         name: "Chile y Latinoamérica",
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Servicios de Consultoría Web",
+        name: "Servicios de diagnóstico y diseño inicial",
         itemListElement: [
           {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Diagnóstico Digital Gratuito",
+              name: "Diagnóstico de Operaciones con IA",
               description:
                 "Filtro de fit y diagnóstico inicial para detectar el mejor punto de partida en operaciones, propuestas, follow-up o sistemas con IA.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Newsletter semanal",
-              description:
-                "Una táctica práctica de IA o PM por semana para operar mejor tu negocio.",
             },
           },
         ],

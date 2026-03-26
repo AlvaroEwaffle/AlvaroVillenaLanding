@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alvarovillena.cl';
 export const metadata: Metadata = {
   title: 'Términos de Uso',
   description:
-    'Términos de uso del sitio alvarovillena.cl y condiciones del diagnóstico digital y servicios de consultoría web.',
+    'Términos de uso del sitio alvarovillena.cl y condiciones del diagnóstico de operaciones con IA y servicios de consultoría.',
   alternates: { canonical: `${siteUrl}/terminos` },
   robots: { index: true, follow: true },
 };

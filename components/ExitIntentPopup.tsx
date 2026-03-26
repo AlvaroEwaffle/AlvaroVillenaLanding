@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import EmailCaptureForm from './EmailCaptureForm';
+import Link from 'next/link';
+import { VILO_DIAGNOSIS_ROUTE } from '@/lib/vilo';
 
 const MOBILE_DELAY_MS = 45_000;
 
@@ -83,10 +84,17 @@ export default function ExitIntentPopup() {
               Antes de irte...
             </h3>
             <p className="text-white/50 text-center mb-6 text-sm leading-relaxed">
-              ¿Quieres ideas prácticas de IA y PM para tu negocio? Una táctica por semana, gratis.
+              Si sientes que algo se está trabando en tu negocio, parte por el diagnóstico. En unos minutos vemos si
+              hace sentido abrir una reunión.
             </p>
 
-            <EmailCaptureForm id="exit-intent-popup" ctaText="Suscribirme al newsletter" />
+            <Link
+              href={VILO_DIAGNOSIS_ROUTE}
+              onClick={dismiss}
+              className="inline-flex w-full items-center justify-center rounded-xl bg-accent px-6 py-4 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+            >
+              Abrir diagnóstico
+            </Link>
           </motion.div>
         </motion.div>
       )}
