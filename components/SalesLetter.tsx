@@ -1,16 +1,12 @@
 'use client';
 
-import { useState, useCallback, useEffect, Fragment } from 'react';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, type Variants } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import ToptalBadge from './ToptalBadge';
+import { ArrowRight } from 'lucide-react';
 import EmailCaptureForm, { trackEvent } from './EmailCaptureForm';
-import { getLenis } from '@/lib/lenis';
-import { VILO_DIAGNOSIS_ROUTE } from '@/lib/vilo';
+import { VILO_DIAGNOSIS_ROUTE, VILO_SCHEDULING_URL } from '@/lib/vilo';
 
-/* ─── Animation variants ─── */
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
@@ -22,116 +18,63 @@ const fadeUp: Variants = {
 
 const stagger: Variants = {
   visible: {
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.12 },
   },
 };
 
-/* ─── Typewriter Headline ─── */
-const HEADLINE_SEGMENTS = [
-  { text: 'Soy Álvaro Villena.', lineBreak: true },
-  { text: 'PM, emprendedor,', lineBreak: true },
-  { text: 'y te ayudo a operar tu negocio con ' },
-  { text: 'IA', accent: true },
-  { text: '.' },
+const trustSignals = [
+  'LATAM Airlines',
+  'PepsiCo',
+  'Toptal Top 3%',
+  '+50 empresas',
 ];
 
-const HEADLINE_CHARS = (() => {
-  const result: { char: string; accent?: boolean; lineBreakBefore?: boolean }[] = [];
-  let prevHadBreak = false;
-  for (const seg of HEADLINE_SEGMENTS) {
-    for (let i = 0; i < seg.text.length; i++) {
-      result.push({
-        char: seg.text[i],
-        accent: seg.accent,
-        lineBreakBefore: i === 0 && prevHadBreak,
-      });
-    }
-    prevHadBreak = !!seg.lineBreak;
-  }
-  return result;
-})();
+const painPoints = [
+  'Tu equipo trabaja mucho, pero cada avance cuesta más de lo que debería.',
+  'Compraron herramientas nuevas, pero el seguimiento, las prioridades y la ejecución siguen enredados.',
+  'La IA promete velocidad, pero hoy convive con procesos débiles y más ruido que claridad.',
+  'Hay buenas ideas, pero falta un sistema claro para decidir, avanzar y cerrar mejor.',
+];
 
-const HEADLINE_FULL_TEXT = 'Soy Álvaro Villena. PM, emprendedor, y te ayudo a operar tu negocio con IA.';
+const cases = [
+  {
+    company: 'LATAM Airlines',
+    description: 'Lideré un sistema de revenue que salió a producción con un MVP claro y ritmo de releases.',
+    badge: 'MVP en 4 meses',
+  },
+  {
+    company: 'PepsiCo',
+    description: 'Ayudé a ordenar múltiples equipos para reducir fricción y acelerar el desarrollo.',
+    badge: '-50% tiempo de desarrollo',
+  },
+  {
+    company: 'Conexión Industrial',
+    description: 'Diseñé una plataforma B2B que conectó empresas, oferta y certificaciones en una sola operación.',
+    badge: '124+ empresas conectadas',
+  },
+];
 
-function TypewriterHeadline({ onComplete }: { onComplete: () => void }) {
-  const reducedMotion = useReducedMotion();
-  const [count, setCount] = useState(reducedMotion ? HEADLINE_CHARS.length : 0);
-  const [cursorVisible, setCursorVisible] = useState(!reducedMotion);
+const testimonials = [
+  {
+    quote:
+      'Trabajar con Álvaro en nuestra plataforma de vehículos conectados fue un cambio total. Trajo estructura a nuestro proceso de producto y nos ayudó a lanzar más rápido sin sacrificar calidad.',
+    company: 'Jooycar',
+    role: 'Insurtech y vehículos conectados',
+  },
+  {
+    quote:
+      'Álvaro nos ayudó a repensar cómo estaba estructurada nuestra plataforma IoT desde el punto de vista de producto. Su enfoque en priorización y ciclos de desarrollo hizo que nuestro equipo de ingeniería fuera mucho más efectivo.',
+    company: 'We Techs',
+    role: 'Plataforma IoT y gestión de agua',
+  },
+  {
+    quote:
+      'Necesitábamos a alguien que entendiera tanto el lado técnico como el de negocio del desarrollo de productos digitales. Álvaro entregó una hoja de ruta clara que aceleró el lanzamiento de nuestra plataforma.',
+    company: 'Progreso',
+    role: 'Servicios financieros y plataforma digital',
+  },
+];
 
-  useEffect(() => {
-    if (reducedMotion) {
-      onComplete();
-      return;
-    }
-
-    if (count >= HEADLINE_CHARS.length) {
-      const t = setTimeout(() => {
-        setCursorVisible(false);
-        onComplete();
-      }, 400);
-      return () => clearTimeout(t);
-    }
-
-    const c = HEADLINE_CHARS[count];
-    let delay = 35;
-    if (c.char === '.') delay = 200;
-    else if (c.lineBreakBefore) delay = 250;
-    else if (c.accent) delay = 55;
-
-    const timer = setTimeout(() => setCount((n) => n + 1), delay);
-    return () => clearTimeout(timer);
-  }, [count, reducedMotion, onComplete]);
-
-  return (
-    <h1 className="text-headline-mobile sm:text-headline text-white mb-6">
-      {/* Full text for SEO crawlers — always in DOM */}
-      <span className="sr-only">{HEADLINE_FULL_TEXT}</span>
-      {/* Visual typewriter version */}
-      <span aria-hidden="true">
-        {HEADLINE_CHARS.slice(0, count).map((c, i) => (
-          <Fragment key={i}>
-            {c.lineBreakBefore && <br />}
-            {c.accent ? (
-              <span className="text-accent">{c.char}</span>
-            ) : (
-              c.char
-            )}
-          </Fragment>
-        ))}
-        {cursorVisible && (
-          <span className="inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 align-baseline animate-pulse" />
-        )}
-      </span>
-    </h1>
-  );
-}
-
-/* ─── Scroll-to-CTA button ─── */
-function ScrollToCta() {
-  const handleClick = () => {
-    const el = document.getElementById('cta-section');
-    if (!el) return;
-    const lenis = getLenis();
-    if (lenis) {
-      lenis.scrollTo(el, { duration: 1.2, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    } else {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className="flex items-center gap-2 text-accent hover:text-accent-hover transition-colors mt-6 group"
-    >
-      <span className="text-base font-medium">Quiero saber más</span>
-      <ChevronDown className="w-5 h-5 animate-bounce" />
-    </button>
-  );
-}
-
-/* ─── Scroll Depth Tracking ─── */
 function useScrollDepthTracking() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -142,10 +85,10 @@ function useScrollDepthTracking() {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (scrollHeight <= 0) return;
       const pct = Math.round((window.scrollY / scrollHeight) * 100);
-      for (const m of milestones) {
-        if (pct >= m && !fired.has(m)) {
-          fired.add(m);
-          trackEvent('scroll_depth', { depth: m });
+      for (const milestone of milestones) {
+        if (pct >= milestone && !fired.has(milestone)) {
+          fired.add(milestone);
+          trackEvent('scroll_depth', { depth: milestone });
         }
       }
     };
@@ -155,413 +98,277 @@ function useScrollDepthTracking() {
   }, []);
 }
 
-/* ─── Main SalesLetter Component ─── */
 export default function SalesLetter() {
-  const [typewriterDone, setTypewriterDone] = useState(false);
-  const handleTypewriterComplete = useCallback(() => setTypewriterDone(true), []);
-
   useScrollDepthTracking();
 
   return (
     <main className="w-full px-5 sm:px-6">
-      {/* noscript: ensure all content visible without JS */}
-      <noscript>
-        <style>{`.js-content-reveal { opacity: 1 !important; }`}</style>
-      </noscript>
-
-      <div className="max-w-letter mx-auto py-12 sm:py-20">
-        {/* ═══════════════════════════════════════════
-            BLOCK 1 — THE HOOK (typewriter)
-        ═══════════════════════════════════════════ */}
-        <section className="mb-section-mobile sm:mb-section">
-          <TypewriterHeadline onComplete={handleTypewriterComplete} />
-
-          <p
-            className={`text-white/60 text-lg sm:text-xl leading-relaxed transition-opacity duration-500 ease-out ${typewriterDone ? 'opacity-100' : 'opacity-0'}`}
+      <div className="max-w-letter mx-auto py-10 sm:py-16">
+        <motion.section
+          className="mb-10 sm:mb-14"
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+        >
+          <motion.div
+            className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-10"
+            variants={fadeUp}
           >
-            Llevo más de 10 años en gestión de producto.
-            <br />
-            Tengo 2 negocios corriendo (Ewaffle y Fidelidapp), además de compartir aprendizajes a través de mis asesorías.
-            <br />
-            Y lo que encontré: las empresas no necesitan más tecnología,
-            <br />
-            necesitan mejores sistemas para usarla.
-          </p>
+            <motion.p
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/85"
+              variants={fadeUp}
+            >
+              Operaciones, producto e IA para equipos en LATAM
+            </motion.p>
 
-          <div className={`transition-opacity duration-500 ease-out ${typewriterDone ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="mt-6">
+            <motion.h1
+              className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl"
+              variants={fadeUp}
+            >
+              Tu equipo tiene herramientas.
+              <br />
+              Le falta el sistema para usarlas bien.
+            </motion.h1>
+
+            <motion.p
+              className="mt-5 max-w-3xl text-lg leading-relaxed text-white/65 sm:text-xl"
+              variants={fadeUp}
+            >
+              PM top 3% en Toptal · 10+ años construyendo productos y ordenando equipos · Trabajo con empresas y
+              emprendedores de LATAM que sienten que avanzan menos de lo que deberían.
+            </motion.p>
+
+            <motion.div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center" variants={fadeUp}>
               <Link
                 href={VILO_DIAGNOSIS_ROUTE}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover sm:w-auto"
               >
-                Ver si este diagnostico calza con tu negocio
+                Responde 9 preguntas y descubre si este sistema te serviría
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* All content below — always in DOM, revealed via opacity after typewriter */}
-        <div
-          className={`js-content-reveal transition-opacity duration-700 ease-out ${typewriterDone ? 'opacity-100' : 'opacity-0'}`}
-        >
-
-        {/* ═══════════════════════════════════════════
-            BLOCK 2 — THE AGITATION
-        ═══════════════════════════════════════════ */}
-        <motion.section
-          className="mb-section-mobile sm:mb-section space-y-6"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-        >
-          <motion.h2
-            className="text-subheadline text-white"
-            variants={fadeUp}
-          >
-            Cómo llegué acá
-          </motion.h2>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            Estudié ingeniería industrial en la Universidad de Concepción. He trabajado con empresas grandes -PepsiCo, LATAM Airlines, CMPC- y con startups -Jooycar, We Techs, Progreso-, donde aprendí que no existe un sistema que funcione para todos; funcionan los que se adaptan mejor a tus necesidades.
-          </motion.p>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            En 2019 empecé a trabajar con Toptal, la red de freelancers más importante a nivel global. Caché algo que no esperaba: los problemas de producto en Silicon Valley son casi idénticos a los de una startup chilena que quiere crecer.
-          </motion.p>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            Mientras tanto, construí mis propios negocios. Hoy tengo Ewaffle (e-learning B2B) y Fidelidapp (SaaS de fidelización), además de compartir lo que aprendo a través de mis asesorías.
-          </motion.p>
-
-          <motion.p className="font-semibold text-white" variants={fadeUp}>
-            Lo que aprendí construyendo productos y negocios propios: el problema no es la falta de ideas. Es la falta de sistemas para ejecutarlas.
-          </motion.p>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            Y la IA, bien usada, es el mejor sistema que existe hoy para hacer más con menos.
-          </motion.p>
-
-          {/* Photo + credentials */}
-          <motion.div
-            className="flex flex-col items-center gap-4 my-8"
-            variants={fadeUp}
-          >
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-accent/30">
-              <Image
-                src="/gallery/StandingLookingAtCamera.JPG"
-                alt="Álvaro Villena — PM Top 3% Toptal · Fundador VilleLab"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 192px, 224px"
-                priority
-              />
-            </div>
-            <p className="text-white/50 text-sm text-center">
-              Álvaro Villena · PM Top 3% Toptal · Fundador VilleLab
-            </p>
-            <a
-              href="https://www.toptal.com/project-managers/resume/alvaro-villena#B3Zxo1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-accent/70 hover:text-accent text-sm transition-colors"
-            >
-              <svg width="16" height="16" viewBox="0 0 21 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.11 0L14.82 6.7C14.87 6.75 14.91 6.8 14.97 6.85L20.82 12.7L11.31 22.16L15.66 26.52L12.75 29.41L6.09 22.75C6.01 22.68 5.93 22.6 5.85 22.52L0 16.68L9.48 7.25L5.16 2.94L8.11 0ZM12.36 10.5C12.27 10.48 12.18 10.48 12.1 10.5C12.01 10.53 11.94 10.57 11.78 10.72L6.37 16.11C6.21 16.27 6.17 16.34 6.15 16.42C6.12 16.51 6.12 16.6 6.15 16.68C6.17 16.77 6.22 16.85 6.37 17L8.09 18.72C8.24 18.87 8.31 18.91 8.4 18.94C8.49 18.96 8.57 18.96 8.66 18.94C8.75 18.91 8.82 18.87 8.97 18.72L14.38 13.33C14.54 13.18 14.58 13.1 14.61 13.02C14.63 12.93 14.63 12.85 14.61 12.76C14.59 12.67 14.54 12.6 14.39 12.45L12.67 10.73C12.52 10.57 12.44 10.53 12.36 10.5Z" />
-              </svg>
-              Top 3% Talent — Toptal
-            </a>
+              <p className="text-sm text-white/45">
+                Partimos por diagnóstico. Si hace sentido, recién ahí abrimos una reunión.
+              </p>
+            </motion.div>
           </motion.div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════════
-            BLOCK 3 — THE PERSPECTIVE
-        ═══════════════════════════════════════════ */}
         <motion.section
-          className="mb-section-mobile sm:mb-section space-y-6"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-        >
-          <motion.h2
-            className="text-subheadline text-white"
-            variants={fadeUp}
-          >
-            Y aquí te lo cuento sin maquillaje
-          </motion.h2>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            Llevo más de 10 años construyendo software y gestionando productos digitales. Esa es la base. El desarrollo de software y la gestión de producto son lo que hace que las cosas funcionen de verdad. La IA llegó después — y es una herramienta brutal, pero solo si ya tienes los fundamentos claros.
-          </motion.p>
-
-          <motion.div className="space-y-4 pl-1" variants={fadeUp}>
-            <div className="flex items-start gap-3">
-              <span className="text-accent font-bold text-xl mt-0.5 shrink-0">
-                &rarr;
-              </span>
-              <p className="text-white/80">
-                Sin un proceso de producto claro, ninguna herramienta te salva — ni la IA más cara del mercado
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-accent font-bold text-xl mt-0.5 shrink-0">
-                &rarr;
-              </span>
-              <p className="text-white/80">
-                El 80% de los equipos compra tecnología antes de tener claridad en su proceso. Primero el sistema, después la herramienta
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-accent font-bold text-xl mt-0.5 shrink-0">
-                &rarr;
-              </span>
-              <p className="text-white/80">
-                Las empresas de LATAM que escalan rápido no tienen más presupuesto ni más gente — tienen mejor estructura de producto y ciclos de desarrollo más cortos
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-accent font-bold text-xl mt-0.5 shrink-0">
-                &rarr;
-              </span>
-              <p className="text-white/80">
-                La IA es la evolución natural de todo esto. Si ya sabes construir y gestionar productos, la IA te hace 10x más efectivo. Si no, solo automatiza el desorden
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            Estas son las conversaciones que tengo cada semana con emprendedores y equipos de producto en toda la región.
-          </motion.p>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════
-            BLOCK 4 — THE CASES
-        ═══════════════════════════════════════════ */}
-        <motion.section
-          className="mb-section-mobile sm:mb-section space-y-6"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-        >
-          <motion.h2
-            className="text-subheadline text-white"
-            variants={fadeUp}
-          >
-            Proyectos reales. En primera persona.
-          </motion.h2>
-
-          <motion.p className="text-white/80" variants={fadeUp}>
-            No te voy a contar casos en tercera persona como si fueran de otra empresa. Estos son proyectos donde estuve adentro, liderando equipos y sacando producto:
-          </motion.p>
-
-          <motion.div className="border-l-4 border-accent pl-5 py-2 space-y-2 mb-6" variants={fadeUp}>
-            <h3 className="text-white font-semibold">LATAM Airlines — Sistema de Revenue</h3>
-            <p className="text-white/80 text-sm">MVP en 4 meses más releases mensuales de features. Lideré un equipo de 9 devs + BA + PO usando Scrum, Kanban y XP. Stack: Google Cloud, Kubernetes, Angular, microservicios Spring Boot. Fuimos pioneros en infraestructura cloud, pipelines CI/CD y microservicios dentro de la organización.</p>
-            <p className="text-accent text-sm font-medium">MVP en 4 meses · equipo de 12 · pioneros en cloud y microservicios</p>
-          </motion.div>
-
-          <motion.div className="border-l-4 border-accent pl-5 py-2 space-y-2 mb-6" variants={fadeUp}>
-            <h3 className="text-white font-semibold">Pepsico — Sistemas Comerciales SAFe</h3>
-            <p className="text-white/80 text-sm">Mejoramos el tiempo de desarrollo en un 50% en el Departamento de Innovación. Implementé una estructura de gestión de programa basada en SAFe con múltiples equipos. Hicimos visible el trabajo cross-team y mejoramos la gestión de dependencias y riesgos.</p>
-            <p className="text-accent text-sm font-medium">-50% tiempo de desarrollo · SAFe multi-equipo · gestión de dependencias</p>
-          </motion.div>
-
-          <motion.div className="border-l-4 border-accent pl-5 py-2 space-y-2 mb-6" variants={fadeUp}>
-            <h3 className="text-white font-semibold">Conexión Industrial — Universidad de Concepción</h3>
-            <p className="text-white/80 text-sm">Plataforma B2B a medida para el Centro para la Industria 4.0 (C4i) de la Universidad de Concepción. Marketplace digital que conecta 124+ empresas en 35 sectores industriales de la región del Biobío. Perfiles verificados, matching automatizado y tracking de certificaciones.</p>
-            <p className="text-accent text-sm font-medium">124+ empresas · 35 sectores · marketplace B2B industrial</p>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════
-            BLOCK 5 — DOUBLE CTA
-        ═══════════════════════════════════════════ */}
-        <motion.section
-          className="mb-section-mobile sm:mb-section"
-          id="cta-section"
+          className="mb-10 sm:mb-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
           variants={fadeUp}
         >
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 sm:p-10">
-            <h3 className="text-xl sm:text-2xl font-semibold text-white text-center mb-2">
-              Trabajemos juntos
-            </h3>
-            <p className="text-white/50 text-center text-sm mb-8">
-              Elige cómo prefieres conectar.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-8">
-              {/* Left: Diagnosis-first */}
-              <div>
-                <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-3">Diagnostico de Operaciones con IA</p>
-                <p className="text-white/60 text-sm mb-4 leading-relaxed">
-                  Si veo fit, abrimos una reunión. Si no, te digo el siguiente paso correcto. Prefiero eso a venderte una call que no te sirva.
-                </p>
-                <Link
-                  href={VILO_DIAGNOSIS_ROUTE}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-4 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
-                >
-                  Abrir diagnóstico
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-              {/* Right: Newsletter */}
-              <div className="sm:border-l sm:border-white/10 sm:pl-8">
-                <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-3">Newsletter semanal</p>
-                <p className="text-white/60 text-sm mb-4 leading-relaxed">
-                  Una táctica práctica de IA o PM cada semana. Sin spam. Para emprendedores y equipos que quieren operar mejor.
-                </p>
-                <EmailCaptureForm id="email-capture" ctaText="Suscribirme gratis" />
-                <p className="text-sm text-white/40 mt-3 text-center">
-                  Bajo compromiso. Alto valor.
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-wrap items-center gap-3 border-y border-white/10 py-5 text-sm font-medium uppercase tracking-[0.14em] text-white/45">
+            {trustSignals.map((signal) => (
+              <span
+                key={signal}
+                className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2"
+              >
+                {signal}
+              </span>
+            ))}
           </div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════════
-            BLOCK 6 — SOCIAL PROOF
-        ═══════════════════════════════════════════ */}
         <motion.section
-          className="mb-section-mobile sm:mb-section space-y-10"
-          variants={stagger}
+          className="mb-10 sm:mb-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
+          variants={stagger}
         >
-          <motion.h2
-            className="text-subheadline text-white"
-            variants={fadeUp}
-          >
-            Lo que dicen quienes ya trabajaron conmigo
-          </motion.h2>
-
-          {/* Testimonials */}
-          <div className="space-y-8">
-            <Testimonial
-              quote="Trabajar con Álvaro en nuestra plataforma de vehículos conectados fue un cambio total. Trajo estructura a nuestro proceso de producto y nos ayudó a lanzar más rápido sin sacrificar calidad."
-              author="Jooycar"
-              role="Insurtech & Vehículos Conectados"
-            />
-            <Testimonial
-              quote="Álvaro nos ayudó a repensar cómo estaba estructurada nuestra plataforma IoT desde el punto de vista de producto. Su enfoque en priorización y ciclos de desarrollo hizo que nuestro equipo de ingeniería fuera mucho más efectivo."
-              author="We Techs"
-              role="Plataforma IoT & Gestión de Agua"
-            />
-            <Testimonial
-              quote="Necesitábamos a alguien que entendiera tanto el lado técnico como el de negocio del desarrollo de productos digitales. Álvaro entregó una hoja de ruta clara que aceleró el lanzamiento de nuestra plataforma."
-              author="Progreso"
-              role="Servicios Financieros & Plataforma Digital"
-            />
-          </div>
-
-          {/* Client logos */}
-          <motion.div variants={fadeUp}>
-            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 py-6 border-t border-b border-white/10">
-              {[
-                'LATAM Airlines',
-                'Pepsico',
-                'Jooycar',
-                'We Techs',
-                'Progreso',
-              ].map((name) => (
-                <span
-                  key={name}
-                  className="text-white/25 font-medium text-sm tracking-wide uppercase"
+          <div className="rounded-[2rem] border border-white/10 bg-slate-950/55 p-6 sm:p-8">
+            <motion.p
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/85"
+              variants={fadeUp}
+            >
+              El problema
+            </motion.p>
+            <motion.h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl" variants={fadeUp}>
+              Lo que frena a los equipos que más trabajan
+            </motion.h2>
+            <motion.div className="mt-6 grid gap-4 sm:grid-cols-2" variants={stagger}>
+              {painPoints.map((point) => (
+                <motion.div
+                  key={point}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-white/75"
+                  variants={fadeUp}
                 >
-                  {name}
-                </span>
+                  {point}
+                </motion.div>
               ))}
-            </div>
-          </motion.div>
-
-          <motion.p
-            className="text-center text-white/50 font-medium"
-            variants={fadeUp}
-          >
-            +50 empresas han confiado en este proceso
-          </motion.p>
-
-          {/* Toptal badge */}
-          <motion.div className="flex justify-center" variants={fadeUp}>
-            <ToptalBadge />
-          </motion.div>
-
-          <motion.p className="text-center text-white/40 text-sm mt-4" variants={fadeUp}>
-            Top 3% Toptal · SAFe Certified · PSM I · 10+ años en gestión de producto
-          </motion.p>
+            </motion.div>
+          </div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════════
-            BLOCK 6b — SECOND EMAIL CAPTURE
-        ═══════════════════════════════════════════ */}
         <motion.section
-          className="mb-section-mobile sm:mb-section"
+          className="mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={stagger}
+        >
+          <motion.div variants={fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/85">
+              Cómo trabajamos
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+              La call debería sentirse como el siguiente paso lógico
+            </h2>
+          </motion.div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <StepCard
+              number="1"
+              title="Agendas 30 min"
+              description="Reservas un espacio corto para revisar si vale la pena conversar en detalle."
+            />
+            <StepCard
+              number="2"
+              title="Entiendo tu contexto"
+              description="Veo dónde está el cuello de botella y qué está frenando al equipo hoy."
+            />
+            <StepCard
+              number="3"
+              title="Te doy un diagnóstico concreto"
+              description="Sales con una lectura clara de por dónde partir y qué no conviene tocar todavía."
+            />
+          </div>
+
+          <motion.p className="mt-6 max-w-3xl text-white/60" variants={fadeUp}>
+            No hay compromiso, ni pitch forzado, ni venta agresiva. Si no veo encaje, te lo digo. Si sí lo veo,
+            avanzamos con una recomendación clara.
+          </motion.p>
+
+          <motion.div className="mt-6" variants={fadeUp}>
+            <a
+              href={VILO_SCHEDULING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/[0.05] px-6 py-4 text-base font-semibold text-white transition-colors hover:border-accent/30 hover:bg-white/[0.08]"
+            >
+              Agendar mi call gratuita
+            </a>
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          className="mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={stagger}
+        >
+          <motion.div variants={fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/85">
+              Casos reales
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+              Ha funcionado en contextos distintos
+            </h2>
+          </motion.div>
+
+          <div className="mt-6 grid gap-4">
+            {cases.map((item) => (
+              <motion.div
+                key={item.company}
+                className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between"
+                variants={fadeUp}
+              >
+                <div className="max-w-3xl">
+                  <p className="text-lg font-semibold text-white">{item.company}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-white/65">{item.description}</p>
+                </div>
+                <span className="inline-flex w-fit items-center rounded-full border border-accent/25 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
+                  {item.badge}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          className="mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={stagger}
+        >
+          <motion.div variants={fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/85">
+              Testimonios
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+              Lo que dicen quienes ya trabajaron conmigo
+            </h2>
+          </motion.div>
+
+          {/* TODO(alvaro): reemplazar placeholders por foto y nombre real. Ejemplo: "María Pérez, Head of Product". */}
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard
+                key={testimonial.company}
+                quote={testimonial.quote}
+                company={testimonial.company}
+                role={testimonial.role}
+              />
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          className="mb-10 sm:mb-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
           variants={fadeUp}
         >
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 sm:p-10">
-            <h3 className="text-xl sm:text-2xl font-semibold text-white text-center mb-2">
-              ¿Quieres seguir la conversación?
-            </h3>
-            <p className="text-white/50 text-center mb-6">
-              Newsletter semanal. Una táctica práctica de IA o PM. Sin spam.
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 text-center sm:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/85">
+              Cierre
             </p>
-            <EmailCaptureForm id="email-capture-2" ctaText="Suscribirme al newsletter" />
+            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+              ¿Tiene sentido conversar?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-white/60">
+              Si tu equipo ya tiene gente, herramientas y trabajo en marcha, pero igual sienten que no avanzan lo
+              suficiente, probablemente vale la pena revisarlo.
+            </p>
+            <a
+              href={VILO_SCHEDULING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex items-center justify-center rounded-xl bg-accent px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+            >
+              Agendar mi call gratuita
+            </a>
           </div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════════
-            BLOCK 7 — THE PS
-        ═══════════════════════════════════════════ */}
+        {/* TODO(alvaro): mover cualquier bloque de Onda a una pagina separada en /onda para no distraer la home principal. */}
+
         <motion.section
-          className="mb-12 sm:mb-16 space-y-6"
-          variants={stagger}
+          className="mb-12 sm:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
+          variants={fadeUp}
         >
-          <motion.h2 className="font-semibold text-lg text-white" variants={fadeUp}>
-            PD: Si prefieres ir directo al grano...
-          </motion.h2>
-          <motion.p className="text-white/80" variants={fadeUp}>
-            Hago calls de descubrimiento para entender tu contexto y ver si hay algo concreto donde puedo ayudarte. Solo trabajo con proyectos donde sé que puedo crear valor real. Si eso te describe, agenda acá.
-          </motion.p>
-          <motion.div variants={fadeUp}>
-            <Link
-              href={VILO_DIAGNOSIS_ROUTE}
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
-            >
-              Ver si califico para el diagnostico
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </motion.div>
-          <motion.p className="text-white/40 text-sm" variants={fadeUp}>
-            Agenda protegida: solo se abre si hay fit.
-          </motion.p>
-          <motion.p className="text-white/40 text-sm mt-2" variants={fadeUp}>
-            Mi firma:{' '}
-            <a
-              href="https://villelab.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent/60 hover:text-accent transition-colors"
-            >
-              villelab.com
-            </a>
-          </motion.p>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
+            <h3 className="text-xl font-semibold text-white sm:text-2xl">
+              Si todavía no quieres una call, puedes partir por acá
+            </h3>
+            <p className="mt-3 max-w-2xl text-white/55">
+              Newsletter semanal. Una táctica práctica de IA o producto por semana, sin relleno y sin spam.
+            </p>
+            <div className="mt-6">
+              <EmailCaptureForm id="email-capture-home-footer" ctaText="Suscribirme al newsletter" />
+            </div>
+          </div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════════
-            MINIMAL FOOTER
-        ═══════════════════════════════════════════ */}
         <footer className="border-t border-white/10 pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/30">
           <span>&copy; 2026 Álvaro Villena</span>
           <div className="flex gap-4">
@@ -595,34 +402,61 @@ export default function SalesLetter() {
             </Link>
           </div>
         </footer>
-
-        {/* Close the content reveal wrapper */}
-        </div>
       </div>
     </main>
   );
 }
 
-/* ─── Testimonial Sub-component ─── */
-function Testimonial({
+function StepCard({
+  number,
+  title,
+  description,
+}: {
+  number: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <motion.div
+      className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+      variants={fadeUp}
+    >
+      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-accent/25 bg-accent/10 text-sm font-semibold text-accent">
+        {number}
+      </span>
+      <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-white/60">{description}</p>
+    </motion.div>
+  );
+}
+
+function TestimonialCard({
   quote,
-  author,
+  company,
   role,
 }: {
   quote: string;
-  author: string;
+  company: string;
   role: string;
 }) {
   return (
-    <motion.blockquote
-      className="border-l-4 border-accent pl-5 py-1"
+    <motion.div
+      className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
       variants={fadeUp}
     >
-      <p className="italic text-white/80 mb-2">&ldquo;{quote}&rdquo;</p>
-      <cite className="text-white/40 text-sm not-italic font-medium">
-        &mdash; {author}
-        <span className="text-white/25">, {role}</span>
-      </cite>
-    </motion.blockquote>
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/[0.02] text-[11px] text-white/35">
+          Foto
+          <br />
+          pendiente
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-white">Nombre pendiente</p>
+          <p className="text-xs text-white/35">{company}</p>
+        </div>
+      </div>
+      <p className="text-white/80">&ldquo;{quote}&rdquo;</p>
+      <p className="mt-4 text-sm text-white/35">{role}</p>
+    </motion.div>
   );
 }
