@@ -103,7 +103,7 @@ export default function SalesLetter() {
 
   return (
     <main className="w-full px-5 sm:px-6">
-      <div className="max-w-letter mx-auto py-10 sm:py-16">
+      <div className="mx-auto max-w-[1380px] py-10 sm:py-16">
         <motion.section
           className="mb-10 sm:mb-14"
           initial="hidden"
@@ -305,7 +305,6 @@ export default function SalesLetter() {
             </h2>
           </motion.div>
 
-          {/* TODO(alvaro): reemplazar placeholders por foto y nombre real. Ejemplo: "María Pérez, Head of Product". */}
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
               <TestimonialCard
@@ -444,19 +443,11 @@ function TestimonialCard({
       className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
       variants={fadeUp}
     >
-      <div className="mb-4 flex items-center gap-3">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/[0.02] text-[11px] text-white/35">
-          Foto
-          <br />
-          pendiente
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-white">Nombre pendiente</p>
-          <p className="text-xs text-white/35">{company}</p>
-        </div>
-      </div>
       <p className="text-white/80">&ldquo;{quote}&rdquo;</p>
-      <p className="mt-4 text-sm text-white/35">{role}</p>
+      <div className="mt-4">
+        <p className="text-sm font-semibold text-white">{company}</p>
+        <p className="text-sm text-white/35">{role}</p>
+      </div>
     </motion.div>
   );
 }
