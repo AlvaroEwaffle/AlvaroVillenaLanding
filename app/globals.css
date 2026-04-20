@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #0f172a;
-  --foreground: #ededed;
-  --accent: #2175a1;
+  --background: #ffffff;
+  --foreground: #172033;
+  --accent: #1f5f68;
+  --accent-strong: #8f2f2f;
+  --muted: #5f6b7a;
+  --line: #d9e0e6;
 }
 
 * {
@@ -23,7 +26,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 18px;
   line-height: 1.7;
@@ -34,10 +37,83 @@ body {
   width: 100%;
 }
 
-/* Mobile body font size */
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(31, 95, 104, 0.16);
+}
+
+.serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+  min-height: 48px;
+  padding: 0 20px;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #174a52;
+}
+
+.btn-secondary {
+  border: 1px solid var(--line);
+  color: var(--foreground);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
 @media (max-width: 640px) {
   body {
     font-size: 16px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .container {
+    width: min(100% - 28px, 1120px);
   }
 }
 

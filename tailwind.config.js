@@ -7,23 +7,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#0f172a",
-        foreground: "#ededed",
-        accent: "#2175a1",
-        "accent-hover": "#1a6088",
-        muted: "rgba(255, 255, 255, 0.5)",
-        "muted-light": "rgba(255, 255, 255, 0.35)",
-        border: "rgba(255, 255, 255, 0.12)",
+        background: "#ffffff",
+        foreground: "#172033",
+        accent: "#1f5f68",
+        "accent-hover": "#174a52",
+        "accent-strong": "#8f2f2f",
+        muted: "#5f6b7a",
+        "muted-light": "#8792a0",
+        border: "#d9e0e6",
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "var(--font-inter)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
           "Roboto",
           "sans-serif",
         ],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       fontSize: {
         body: ["18px", { lineHeight: "1.7" }],

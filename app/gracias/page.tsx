@@ -1,28 +1,29 @@
 import type { Metadata } from 'next';
-import GraciasGuard from '@/components/GraciasGuard';
-import GraciasContent from '@/components/GraciasContent';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alvarovillena.cl';
+import Link from 'next/link';
+import SiteShell from '@/components/SiteShell';
 
 export const metadata: Metadata = {
-  title: 'Gracias por suscribirte',
-  description:
-    'Gracias por suscribirte al newsletter de Álvaro Villena. Si después quieres abrir una reunión, primero pasa por el diagnostico de operaciones con IA.',
-  alternates: { canonical: `${siteUrl}/gracias` },
-  robots: { index: false, follow: false },
-  openGraph: {
-    title: 'Gracias por suscribirte — Álvaro Villena',
-    description:
-      'Newsletter confirmado. Si luego quieres abrir una reunión, primero pasa por el diagnostico de operaciones con IA.',
-    url: `${siteUrl}/gracias`,
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
-  },
+  title: 'Gracias',
+  robots: { index: false, follow: true },
 };
 
-export default function GraciasPage() {
+export default function GraciasCompatPage() {
   return (
-    <GraciasGuard>
-      <GraciasContent />
-    </GraciasGuard>
+    <SiteShell>
+      <main>
+        <section className="section">
+          <div className="container max-w-3xl">
+            <p className="eyebrow">Ruta actualizada</p>
+            <h1 className="serif mt-3 text-4xl font-bold">Gracias. El flujo principal ahora es por agenda.</h1>
+            <p className="mt-5 text-muted">
+              Si quieres conversar sobre tu empresa, tecnologia o producto, agenda una llamada de 30 minutos.
+            </p>
+            <Link href="/contacto" className="btn-primary mt-8">
+              Agenda una llamada
+            </Link>
+          </div>
+        </section>
+      </main>
+    </SiteShell>
   );
 }

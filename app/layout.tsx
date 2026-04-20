@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import AmbientBackground from "@/components/AmbientBackground";
-import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
-import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,35 +10,41 @@ const inter = Inter({
   weight: ["400", "600", "700"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["600", "700"],
+});
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://alvarovillena.cl";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f172a",
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
+    default: "Álvaro Villena | Asesor senior de tecnología y producto",
     template: "%s | Álvaro Villena",
   },
   description:
-    "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
+    "Acompaño a empresas medianas chilenas a ordenar sus procesos, implementar tecnología que su equipo sí usa y preparar la operación para la siguiente generación.",
   keywords: [
-    "operaciones con IA",
-    "mejora de procesos chile",
-    "consultor operaciones chile",
-    "consultoría IA LATAM",
-    "implementar IA empresa",
-    "diagnóstico de operaciones",
-    "automatización para negocios",
+    "asesor tecnologia chile",
+    "consultor producto chile",
+    "empresa familiar chile",
+    "modernizacion empresas medianas",
+    "fractional CTO chile",
+    "fractional CPO chile",
+    "diagnostico tecnologia empresa",
+    "consultoria senior producto",
     "VilleLab",
     "Álvaro Villena",
-    "sistemas para negocios",
-    "IA para emprendedores LATAM",
   ],
   authors: [{ name: "Álvaro Villena", url: siteUrl }],
   creator: "Álvaro Villena",
@@ -62,24 +65,24 @@ export const metadata: Metadata = {
     locale: "es_CL",
     url: siteUrl,
     siteName: "Álvaro Villena",
-    title: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
+    title: "Álvaro Villena | Asesor senior de tecnología y producto",
     description:
-      "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
+      "Acompaño a empresas medianas chilenas a modernizarse sin estrellarse. Ex-LATAM, ex-PepsiCo, consultor Toptal.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Álvaro Villena — operaciones, sistemas e IA para negocios",
+        alt: "Álvaro Villena — asesor senior de tecnología y producto",
       },
       { url: "/icono.png", width: 512, height: 512, alt: "Álvaro Villena" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
+    title: "Álvaro Villena | Asesor senior de tecnología y producto",
     description:
-      "Ayudo a empresas y emprendedores a ordenar su operación y usar IA donde sí genera impacto.",
+      "Acompaño a empresas medianas chilenas a ordenar procesos e implementar tecnología que el equipo sí usa.",
     creator: "@chokovillena",
     images: ["/og-image.jpg"],
   },
@@ -99,7 +102,7 @@ export const metadata: Metadata = {
     shortcut: "/icono.png",
   },
   other: {
-    "msapplication-TileColor": "#0f172a",
+    "msapplication-TileColor": "#ffffff",
     "msapplication-TileImage": "/icono.png",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
@@ -115,9 +118,9 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
+      name: "Álvaro Villena | Asesor senior de tecnología y producto",
       description:
-        "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
+        "Acompaño a empresas medianas chilenas a ordenar sus procesos, implementar tecnología que su equipo sí usa y preparar la operación para la siguiente generación.",
       inLanguage: "es",
       publisher: { "@id": `${siteUrl}/#person` },
     },
@@ -125,9 +128,9 @@ const structuredData = {
       "@type": "WebPage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: "Álvaro Villena | Operaciones, sistemas e IA para negocios",
+      name: "Álvaro Villena | Asesor senior de tecnología y producto",
       description:
-        "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA donde realmente genera impacto.",
+        "Acompaño a empresas medianas chilenas a modernizarse sin estrellarse.",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#person` },
       inLanguage: "es",
@@ -139,9 +142,9 @@ const structuredData = {
       name: "Álvaro Villena",
       url: siteUrl,
       image: `${siteUrl}/gallery/StandingLookingAtCamera.JPG`,
-      jobTitle: "Consultor en operaciones, sistemas e implementación de IA",
+      jobTitle: "Asesor senior de tecnología y producto",
       description:
-        "Ayudo a empresas y emprendedores a ordenar su operación, mejorar sus procesos y usar IA de forma práctica.",
+        "Ayudo a empresas medianas chilenas a ordenar procesos, tomar mejores decisiones tecnológicas y preparar su operación para crecer.",
       knowsAbout: [
         "Agile Project Management",
         "Product Management",
@@ -189,26 +192,26 @@ const structuredData = {
     {
       "@type": "Service",
       "@id": `${siteUrl}/#service`,
-      name: "Diagnóstico de Operaciones con IA",
+      name: "Diagnóstico de tecnología y producto",
       description:
-        "Diagnóstico y diseño inicial para empresas y emprendedores que quieren ordenar su operación y usar IA donde realmente hace sentido.",
+        "Diagnóstico de dos semanas para empresas medianas chilenas que necesitan ordenar procesos, sistemas y prioridades tecnológicas.",
       provider: { "@id": `${siteUrl}/#person` },
-      serviceType: "AI Operations Diagnosis & Business Systems Consulting",
+      serviceType: "Technology and Product Advisory",
       areaServed: {
         "@type": "Place",
         name: "Chile y Latinoamérica",
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Servicios de diagnóstico y diseño inicial",
+        name: "Servicios de consultoría senior",
         itemListElement: [
           {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Diagnóstico de Operaciones con IA",
+              name: "Diagnóstico de tecnología y producto",
               description:
-                "Filtro de fit y diagnóstico inicial para detectar el mejor punto de partida en operaciones, propuestas, follow-up o sistemas con IA.",
+                "Revisión ejecutiva de operación, sistemas, procesos y hoja de ruta de 90 días.",
             },
           },
         ],
@@ -233,7 +236,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -244,13 +247,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
 
-        <AmbientBackground />
-        <div className="relative z-10">
-          {children}
-        </div>
-
-        <WhatsAppFloatButton />
-        <ExitIntentPopup />
+        {children}
 
         {/* Google Tag Manager — deferred to after interactive */}
         <Script
@@ -262,6 +259,13 @@ export default function RootLayout({
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PBTHC5VK');`,
+          }}
+        />
+        <Script
+          id="gclid-capture"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var p=new URLSearchParams(window.location.search);var g=p.get('gclid');if(g){localStorage.setItem('gclid',g);var e=new Date();e.setDate(e.getDate()+90);document.cookie='gclid='+encodeURIComponent(g)+'; expires='+e.toUTCString()+'; path=/; Secure; SameSite=Lax';}})();`,
           }}
         />
       </body>

@@ -2,6 +2,8 @@ export const VILO_SCHEDULING_URL =
   'https://capu.villelab.com/schedule/reunion-descubrimiento-con-alvaro/';
 
 export const VILO_DIAGNOSIS_ROUTE = '/diagnostico';
+export const CONTACT_EMAIL = 'hola@alvarovillena.cl';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/alvarovillena';
 export const VILO_MAX_SCORE = 80;
 
 const FIDELIDAPP_URL = process.env.NEXT_PUBLIC_FIDELIDAPP_URL ?? '';
