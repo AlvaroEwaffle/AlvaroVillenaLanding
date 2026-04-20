@@ -16,7 +16,7 @@ export default function GraciasCompatPage() {
             <p className="eyebrow">Ruta actualizada</p>
             <h1 className="serif mt-3 text-4xl font-bold">Gracias. El flujo principal ahora es por agenda.</h1>
             <p className="mt-5 text-muted">
-              Si quieres conversar sobre tu empresa, tecnologia o producto, agenda una llamada de 30 minutos.
+              Si quieres conversar sobre tu empresa, tecnología o producto, agenda una llamada de 30 minutos.
             </p>
             <Link href="/contacto" className="btn-primary mt-8">
               Agenda una llamada

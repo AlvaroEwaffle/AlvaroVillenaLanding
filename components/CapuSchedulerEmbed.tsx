@@ -55,7 +55,7 @@ export default function CapuSchedulerEmbed() {
     <div className="overflow-hidden rounded-lg border border-border bg-white">
       {src ? (
         <iframe
-          title="Agenda una llamada con Alvaro Villena"
+          title="Agenda una llamada con Álvaro Villena"
           src={src}
           className="h-[760px] w-full"
           loading="lazy"

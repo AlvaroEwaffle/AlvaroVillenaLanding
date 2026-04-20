@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,14 +36,14 @@ export const metadata: Metadata = {
   description:
     "Acompaño a empresas medianas chilenas a ordenar sus procesos, implementar tecnología que su equipo sí usa y preparar la operación para la siguiente generación.",
   keywords: [
-    "asesor tecnologia chile",
+    "asesor tecnología chile",
     "consultor producto chile",
     "empresa familiar chile",
-    "modernizacion empresas medianas",
+    "modernización empresas medianas",
     "fractional CTO chile",
     "fractional CPO chile",
-    "diagnostico tecnologia empresa",
-    "consultoria senior producto",
+    "diagnóstico tecnología empresa",
+    "consultoría senior producto",
     "VilleLab",
     "Álvaro Villena",
   ],
@@ -247,6 +248,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
 
+        <SmoothScroll />
         {children}
 
         {/* Google Tag Manager — deferred to after interactive */}

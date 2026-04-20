@@ -6,91 +6,91 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alvarovillena.cl';
 
 export const metadata: Metadata = {
   title: 'Servicios',
-  description: 'Diagnostico, modernizacion acompanada y asesoría tecnologica para empresas familiares chilenas.',
+  description: 'Diagnóstico, modernización acompañada y asesoría tecnológica para empresas familiares chilenas.',
   alternates: { canonical: `${siteUrl}/servicios` },
 };
 
 const services = [
   {
     id: 'diagnostico',
-    title: 'Diagnostico de tecnologia y producto',
-    price: 'Desde UF 180 · Duracion: 2 semanas',
+    title: 'Diagnóstico de tecnología y producto',
+    price: 'Desde UF 180 · Duración: 2 semanas',
     forWho:
-      'Para duenos, gerentes generales o hijos de segunda generacion que saben que hay que hacer algo, pero no tienen claro por donde partir.',
+      'Para dueños, gerentes generales o hijos de segunda generación que saben que hay que hacer algo, pero no tienen claro por dónde partir.',
     includes: [
       'Kickoff con el equipo ejecutivo para alinear objetivos y alcance.',
       'Entrevistas con 5 a 8 personas clave.',
-      'Revision de sistemas actuales, procesos criticos, metricas y proveedores.',
-      'Sintesis de los 5 a 7 problemas mas criticos, priorizados por impacto y esfuerzo.',
+      'Revisión de sistemas actuales, procesos críticos, métricas y proveedores.',
+      'Síntesis de los 5 a 7 problemas más críticos, priorizados por impacto y esfuerzo.',
     ],
     outcome: [
-      'Documento ejecutivo de 15 a 20 paginas.',
-      'Presentacion de 60 minutos al equipo ejecutivo o directorio.',
-      'Hoja de ruta de 90 dias con rangos de inversion y forma de medir exito.',
-      'Credito total aplicable si contratas una modalidad larga dentro de 30 dias.',
+      'Documento ejecutivo de 15 a 20 páginas.',
+      'Presentación de 60 minutos al equipo ejecutivo o directorio.',
+      'Hoja de ruta de 90 días con rangos de inversión y forma de medir éxito.',
+      'Crédito total aplicable si contratas una modalidad larga dentro de 30 días.',
     ],
   },
   {
     id: 'modernizacion',
-    title: 'Modernizacion acompanada',
-    price: 'Desde UF 220 / mes · Duracion: 3 meses',
+    title: 'Modernización acompañada',
+    price: 'Desde UF 220 / mes · Duración: 3 meses',
     forWho:
       'Para empresas que ya tienen claro que necesitan modernizar y requieren liderazgo senior para ejecutar sin contratar full-time.',
     includes: [
-      'Liderazgo de transformacion durante un trimestre.',
-      '2 a 3 dias por semana de dedicacion a tu empresa.',
-      'Supervision de proveedores externos y equipo interno.',
-      'Trabajo en ciclos cortos, entregas quincenales y metricas visibles.',
+      'Liderazgo de transformación durante un trimestre.',
+      '2 a 3 días por semana de dedicación a tu empresa.',
+      'Supervisión de proveedores externos y equipo interno.',
+      'Trabajo en ciclos cortos, entregas quincenales y métricas visibles.',
     ],
     outcome: [
-      'Equipo operando con nueva metodologia y prioridades claras.',
-      'Proyectos tecnologicos avanzados o entregados, segun alcance.',
+      'Equipo operando con nueva metodología y prioridades claras.',
+      'Proyectos tecnológicos avanzados o entregados, según alcance.',
       'Procesos, decisiones y aprendizajes documentados para continuidad.',
-      'Renovacion trimestre a trimestre, sin compromiso anual.',
+      'Renovación trimestre a trimestre, sin compromiso anual.',
     ],
   },
   {
     id: 'asesor',
-    title: 'Asesor de tecnologia y producto',
-    price: 'Desde UF 260 / mes · 6 meses minimo',
+    title: 'Asesor de tecnología y producto',
+    price: 'Desde UF 260 / mes · 6 meses mínimo',
     forWho:
-      'Para empresas medianas que necesitan liderazgo senior en tecnologia y producto, pero no justifican aun un gerente full-time.',
+      'Para empresas medianas que necesitan liderazgo senior en tecnología y producto, pero no justifican aún un gerente full-time.',
     includes: [
-      'Participacion en comite ejecutivo o directorio cada 2 semanas.',
-      '2 dias por semana de dedicacion a tu empresa.',
-      'Decisiones sobre que construir, contratar, postergar o descartar.',
-      'Supervision de equipo tecnico interno o externo.',
+      'Participación en comité ejecutivo o directorio cada 2 semanas.',
+      '2 días por semana de dedicación a tu empresa.',
+      'Decisiones sobre qué construir, contratar, postergar o descartar.',
+      'Supervisión de equipo técnico interno o externo.',
     ],
     outcome: [
       'Liderazgo senior sin el costo de un full-time.',
-      'Tecnologia alineada a objetivos de negocio.',
-      'Equipo tecnico con mejor criterio y menos dependencia externa.',
+      'Tecnología alineada a objetivos de negocio.',
+      'Equipo técnico con mejor criterio y menos dependencia externa.',
       'Disponibilidad para emergencias puntuales fuera del horario acordado.',
     ],
   },
 ];
 
 const faqs = [
-  ['¿Por que publicas precios?', 'Porque respeta tu tiempo y el mio. Si el rango no calza, lo sabes antes de agendar.'],
-  ['¿Como se define el precio final?', 'Depende del tamano de la empresa, alcance especifico y dedicacion semanal acordada.'],
-  ['¿Facturas con factura?', 'Si. Trabajo con factura a traves de una SpA y los servicios incluyen IVA cuando corresponde.'],
-  ['¿Atiendes fuera de Santiago?', 'Si. Trabajo con clientes en todo Chile y LatAm, remoto con visitas presenciales cuando se requiere.'],
-  ['¿Firmas confidencialidad?', 'Si. Y los casos publicos solo se comparten con autorizacion expresa del cliente.'],
-  ['¿Que pasa si no funciona?', 'En retainer puedes terminar al cierre del trimestre sin penalizacion. En diagnostico, el documento es tuyo.'],
+  ['¿Por qué publicas precios?', 'Porque respeta tu tiempo y el mío. Si el rango no calza, lo sabes antes de agendar.'],
+  ['¿Cómo se define el precio final?', 'Depende del tamaño de la empresa, alcance específico y dedicación semanal acordada.'],
+  ['¿Facturas con factura?', 'Sí. Trabajo con factura a través de una SpA y los servicios incluyen IVA cuando corresponde.'],
+  ['¿Atiendes fuera de Santiago?', 'Sí. Trabajo con clientes en todo Chile y LatAm, remoto con visitas presenciales cuando se requiere.'],
+  ['¿Firmas confidencialidad?', 'Sí. Y los casos públicos solo se comparten con autorización expresa del cliente.'],
+  ['¿Qué pasa si no funciona?', 'En retainer puedes terminar al cierre del trimestre sin penalización. En diagnóstico, el documento es tuyo.'],
 ];
 
 export default function ServiciosPage() {
   return (
     <SiteShell>
       <main>
-        <section className="section bg-[#f6f8f8]">
+        <section className="section section-blue">
           <div className="container">
             <p className="eyebrow">Servicios</p>
             <h1 className="serif mt-3 max-w-3xl text-5xl font-bold leading-tight">
               Tres formas de trabajar conmigo.
             </h1>
             <p className="mt-5 max-w-3xl text-xl text-muted">
-              Cada empresa esta en un momento distinto: por donde partir, como ejecutar, o quien acompana a largo plazo.
+              Cada empresa está en un momento distinto: por dónde partir, cómo ejecutar, o quién acompaña a largo plazo.
             </p>
           </div>
         </section>
@@ -103,17 +103,17 @@ export default function ServiciosPage() {
                 <h2 className="serif mt-2 text-4xl font-bold">{service.title}</h2>
                 <div className="mt-8 grid gap-8 lg:grid-cols-3">
                   <div>
-                    <h3 className="font-bold">Para quien es</h3>
+                    <h3 className="font-bold">Para quién es</h3>
                     <p className="mt-3 text-muted">{service.forWho}</p>
                   </div>
                   <div>
-                    <h3 className="font-bold">Que incluye</h3>
+                    <h3 className="font-bold">Qué incluye</h3>
                     <ul className="mt-3 space-y-2 text-muted">
                       {service.includes.map((item) => <li key={item}>• {item}</li>)}
                     </ul>
                   </div>
                   <div>
-                    <h3 className="font-bold">Que te llevas</h3>
+                    <h3 className="font-bold">Qué te llevas</h3>
                     <ul className="mt-3 space-y-2 text-muted">
                       {service.outcome.map((item) => <li key={item}>• {item}</li>)}
                     </ul>
@@ -127,7 +127,7 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        <section className="section bg-[#f6f8f8]">
+        <section className="section section-blue">
           <div className="container">
             <h2 className="serif text-4xl font-bold">Preguntas frecuentes</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
