@@ -53,33 +53,47 @@ export default function Home() {
   return (
     <SiteShell>
       <main>
-        <section
-          className="relative min-h-[680px] overflow-hidden bg-[#e9eef0]"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.88) 48%, rgba(255,255,255,0.2) 100%), url('/gallery/StandingLookingAtCamera.JPG')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center right',
-          }}
-        >
-          <div className="container flex min-h-[680px] items-center py-20">
+        <section className="relative min-h-[720px] overflow-hidden bg-[#0f172a] text-white">
+          <div className="absolute inset-y-0 right-0 hidden w-[54%] md:block">
+            <Image
+              src="/gallery/StandingLookingAtCamera.JPG"
+              alt="Alvaro Villena"
+              fill
+              priority
+              className="object-contain object-right-bottom opacity-80"
+              sizes="54vw"
+            />
+          </div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(90deg, #0f172a 0%, rgba(15,23,42,0.98) 43%, rgba(15,23,42,0.72) 68%, rgba(15,23,42,0.2) 100%)',
+            }}
+          />
+          <div className="container relative z-10 flex min-h-[720px] items-center py-20">
             <div className="max-w-3xl">
-              <p className="eyebrow">Consultoria senior para empresas medianas chilenas</p>
-              <h1 className="serif mt-5 text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#7fc4e4]">
+                Consultoria senior para empresas medianas chilenas
+              </p>
+              <h1 className="serif mt-5 text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
                 Asesor senior de tecnologia y producto para empresas familiares chilenas.
               </h1>
-              <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted">
+              <p className="mt-6 max-w-2xl text-xl leading-relaxed text-[#c8d3e1]">
                 Acompano a empresas medianas a ordenar sus procesos, implementar tecnologia que su equipo si usa y preparar la operacion para la siguiente generacion.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/contacto" className="btn-primary">
                   Agenda una llamada de 30 minutos
                 </Link>
-                <Link href="/servicios" className="btn-secondary">
+                <Link
+                  href="/servicios"
+                  className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/20 px-5 font-bold text-white transition hover:border-accent hover:text-[#7fc4e4]"
+                >
                   Ver servicios
                 </Link>
               </div>
-              <p className="mt-5 text-sm font-semibold text-muted">
+              <p className="mt-5 text-sm font-semibold text-[#9fb0c7]">
                 Ex-LATAM Airlines · Ex-PepsiCo via Toptal · +8 anos liderando equipos de producto y transformacion
               </p>
             </div>
@@ -103,7 +117,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section bg-[#f6f8f8]">
+        <section className="section bg-[#f8fafc]">
           <div className="container">
             <p className="eyebrow">Como te ayudo</p>
             <h2 className="serif mt-3 text-4xl font-bold">Tres formas de trabajar conmigo</h2>
@@ -156,7 +170,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section bg-[#f6f8f8]">
+        <section className="section bg-[#f8fafc]">
           <div className="container">
             <p className="eyebrow">Como trabajo</p>
             <h2 className="serif mt-3 max-w-3xl text-4xl font-bold">Serio, directo y sin venderte humo.</h2>

@@ -5,10 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #172033;
-  --accent: #1f5f68;
+  --accent: #2175a1;
   --accent-strong: #8f2f2f;
   --muted: #5f6b7a;
-  --line: #d9e0e6;
+  --line: #d7dde7;
 }
 
 * {
@@ -42,7 +42,7 @@ a {
 }
 
 ::selection {
-  background: rgba(31, 95, 104, 0.16);
+  background: rgba(33, 117, 161, 0.18);
 }
 
 .serif {
@@ -84,7 +84,7 @@ a {
 }
 
 .btn-primary:hover {
-  background: #174a52;
+  background: #1a6088;
 }
 
 .btn-secondary {

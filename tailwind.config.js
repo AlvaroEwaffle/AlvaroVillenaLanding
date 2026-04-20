@@ -9,12 +9,12 @@ module.exports = {
       colors: {
         background: "#ffffff",
         foreground: "#172033",
-        accent: "#1f5f68",
-        "accent-hover": "#174a52",
+        accent: "#2175a1",
+        "accent-hover": "#1a6088",
         "accent-strong": "#8f2f2f",
         muted: "#5f6b7a",
         "muted-light": "#8792a0",
-        border: "#d9e0e6",
+        border: "#d7dde7",
       },
       fontFamily: {
         sans: [
