@@ -102,21 +102,32 @@ export default function Home() {
         </section>
 
         <section className="section">
-          <div className="container">
-            <Reveal>
-              <p className="eyebrow">El problema</p>
-              <h2 className="serif mt-3 max-w-3xl text-4xl font-bold leading-tight">
-                Tu empresa puede estar sana y aun así estar perdiendo velocidad.
-              </h2>
-            </Reveal>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {problems.map((item, index) => (
-                <Reveal key={item.title} className="card p-6" delay={index * 0.05}>
-                  <h3 className="text-xl font-bold">{item.title}</h3>
-                  <p className="mt-3 text-muted">{item.text}</p>
-                </Reveal>
-              ))}
+          <div className="container grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <Reveal>
+                <p className="eyebrow">El problema</p>
+                <h2 className="serif mt-3 max-w-3xl text-4xl font-bold leading-tight">
+                  Tu empresa puede estar sana y aun así estar perdiendo velocidad.
+                </h2>
+              </Reveal>
+              <div className="mt-10 grid gap-4">
+                {problems.map((item, index) => (
+                  <Reveal key={item.title} className="card p-6" delay={index * 0.05}>
+                    <h3 className="text-xl font-bold">{item.title}</h3>
+                    <p className="mt-3 text-muted">{item.text}</p>
+                  </Reveal>
+                ))}
+              </div>
             </div>
+            <Reveal className="relative aspect-[4/5] overflow-hidden rounded-lg order-first lg:order-last hidden md:block">
+              <Image
+                src="/gallery/generated/empresa_transformacion.png"
+                alt="Empresa en transformación digital"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 420px, 100vw"
+              />
+            </Reveal>
           </div>
         </section>
 
@@ -145,8 +156,8 @@ export default function Home() {
           <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <Reveal className="relative aspect-[4/5] overflow-hidden rounded-lg">
               <Image
-                src="/gallery/StandingLookingAtCamera.JPG"
-                alt="Álvaro Villena"
+                src="/gallery/generated/sesion_estrategia.png"
+                alt="Sesión de estrategia tecnológica"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 420px, 100vw"
