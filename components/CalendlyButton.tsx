@@ -1,8 +1,7 @@
 'use client';
 
+import { VILO_SCHEDULING_URL } from '@/lib/vilo';
 import { trackEvent } from './EmailCaptureForm';
-
-const CALENDLY_URL = 'https://capu.villelab.com/schedule/reunion-descubrimiento-con-alvaro/';
 
 interface CalendlyButtonProps {
   text?: string;
@@ -15,7 +14,7 @@ export default function CalendlyButton({
 }: CalendlyButtonProps) {
   return (
     <a
-      href={CALENDLY_URL}
+      href={VILO_SCHEDULING_URL}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackEvent('calendar_click')}

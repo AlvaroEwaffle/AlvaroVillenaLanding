@@ -1,5 +1,5 @@
 export const VILO_SCHEDULING_URL =
-  'https://capu.villelab.com/schedule/reunion-descubrimiento-con-alvaro/';
+  'https://capu.villelab.com/schedule/reunion-descubrimiento-con-alvaro-villelabs';
 
 export const VILO_DIAGNOSIS_ROUTE = '/diagnostico';
 export const CONTACT_EMAIL = 'hola@alvarovillena.cl';
