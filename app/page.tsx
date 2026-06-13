@@ -25,19 +25,19 @@ const problems = [
 const services = [
   {
     title: 'Diagnóstico de 2 semanas',
-    price: 'Desde UF 180',
+    price: 'Desde USD $2,420',
     href: '/servicios#diagnostico',
     text: 'Entrevistas, revisión de sistemas y hoja de ruta de 90 días. Sin venderte software. Sin compromiso de seguir.',
   },
   {
     title: 'Modernización acompañada',
-    price: 'Desde UF 220 / mes',
+    price: 'Desde USD $2,960 / mes',
     href: '/servicios#modernizacion',
     text: 'Lidero la ejecución durante un trimestre, superviso proveedores y dejo al equipo operando con ciclos claros.',
   },
   {
     title: 'Asesor de tecnología y producto',
-    price: 'Desde UF 260 / mes',
+    price: 'Desde USD $3,500 / mes',
     href: '/servicios#asesor',
     text: 'Tu director de tecnología part-time para comité ejecutivo, decisiones críticas y supervisión del equipo técnico.',
   },

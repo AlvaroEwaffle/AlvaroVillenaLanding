@@ -14,7 +14,7 @@ const services = [
   {
     id: 'diagnostico',
     title: 'Diagnóstico de tecnología y producto',
-    price: 'Desde UF 180 · Duración: 2 semanas',
+    price: 'Desde USD $2,420 · Duración: 2 semanas',
     forWho:
       'Para dueños, gerentes generales o hijos de segunda generación que saben que hay que hacer algo, pero no tienen claro por dónde partir.',
     includes: [
@@ -33,7 +33,7 @@ const services = [
   {
     id: 'modernizacion',
     title: 'Modernización acompañada',
-    price: 'Desde UF 220 / mes · Duración: 3 meses',
+    price: 'Desde USD $2,960 / mes · Duración: 3 meses',
     forWho:
       'Para empresas que ya tienen claro que necesitan modernizar y requieren liderazgo senior para ejecutar sin contratar full-time.',
     includes: [
@@ -52,7 +52,7 @@ const services = [
   {
     id: 'asesor',
     title: 'Asesor de tecnología y producto',
-    price: 'Desde UF 260 / mes · 6 meses mínimo',
+    price: 'Desde USD $3,500 / mes · 6 meses mínimo',
     forWho:
       'Para empresas medianas que necesitan liderazgo senior en tecnología y producto, pero no justifican aún un gerente full-time.',
     includes: [
@@ -73,7 +73,7 @@ const services = [
 const faqs = [
   ['¿Por qué publicas precios?', 'Porque respeta tu tiempo y el mío. Si el rango no calza, lo sabes antes de agendar.'],
   ['¿Cómo se define el precio final?', 'Depende del tamaño de la empresa, alcance específico y dedicación semanal acordada.'],
-  ['¿Facturas con factura?', 'Sí. Trabajo con factura a través de una SpA y los servicios incluyen IVA cuando corresponde.'],
+  ['¿Facturas con factura?', 'Sí. Trabajo con factura a través de una Ltda. Estoy exento de IVA, así que los precios no llevan IVA.'],
   ['¿Atiendes fuera de Santiago?', 'Sí. Trabajo con clientes en todo Chile y LatAm, remoto con visitas presenciales cuando se requiere.'],
   ['¿Firmas confidencialidad?', 'Sí. Y los casos públicos solo se comparten con autorización expresa del cliente.'],
   ['¿Qué pasa si no funciona?', 'En retainer puedes terminar al cierre del trimestre sin penalización. En diagnóstico, el documento es tuyo.'],

@@ -50,11 +50,11 @@ export default function CoachingPage() {
               <div className="mt-6 grid gap-4">
                 <div className="border-b border-border pb-4">
                   <p className="font-bold">Pack 6 sesiones · 3 meses</p>
-                  <p className="text-2xl font-bold text-accent">CLP $750.000</p>
+                  <p className="text-2xl font-bold text-accent">USD $825</p>
                 </div>
                 <div>
                   <p className="font-bold">Pack 12 sesiones · 6 meses</p>
-                  <p className="text-2xl font-bold text-accent">CLP $1.350.000</p>
+                  <p className="text-2xl font-bold text-accent">USD $1,485</p>
                 </div>
               </div>
               <p className="mt-5 text-sm text-muted">Se factura al inicio del pack. Opción de pago en 2 cuotas sin interés.</p>
