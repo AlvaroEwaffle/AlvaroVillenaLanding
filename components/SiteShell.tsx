@@ -54,7 +54,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
               <a href="https://www.linkedin.com/in/alvarovillena" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
                 LinkedIn
               </a>
-              <a href="https://villelabs.cl" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a href="https://villelab.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
                 Villelabs
               </a>
             </div>
