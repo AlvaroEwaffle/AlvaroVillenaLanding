@@ -52,13 +52,13 @@ export default function SobreMiPage() {
             <h1 className="serif mt-3 max-w-4xl text-5xl font-bold leading-tight">
               Entre multinacionales globales y empresas familiares chilenas.
             </h1>
-            <div className="relative mt-10 aspect-[16/7] overflow-hidden rounded-lg">
+            <div className="relative mt-10 aspect-[4/3] max-w-2xl overflow-hidden rounded-lg">
               <Image
-                src="/gallery/StandingLookingAtCamera.JPG"
+                src="/gallery/alvaro-sonrisa.jpg"
                 alt="Álvaro Villena"
                 fill
-                className="object-cover"
-                sizes="100vw"
+                className="object-cover object-[50%_15%]"
+                sizes="(min-width: 768px) 672px, 100vw"
                 priority
               />
             </div>

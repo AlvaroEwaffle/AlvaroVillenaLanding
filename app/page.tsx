@@ -57,11 +57,11 @@ export default function Home() {
         <section className="relative min-h-[720px] overflow-hidden bg-[#0f172a] text-white">
           <Reveal className="absolute inset-y-0 right-0 hidden w-[54%] md:block" delay={0.12}>
             <Image
-              src="/gallery/StandingLookingAtCamera.JPG"
+              src="/gallery/alvaro-retrato.jpg"
               alt="Álvaro Villena"
               fill
               priority
-              className="object-contain object-right-bottom opacity-80"
+              className="object-cover object-[60%_25%] opacity-80"
               sizes="54vw"
             />
           </Reveal>

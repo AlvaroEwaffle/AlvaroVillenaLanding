@@ -16,11 +16,11 @@ export default function LinksPage() {
       <div className="mx-auto flex w-full max-w-md flex-col items-center">
         <div className="relative h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-md">
           <Image
-            src="/gallery/StandingLookingAtCamera.JPG"
+            src="/gallery/alvaro-retrato.jpg"
             alt="Álvaro Villena"
             fill
             sizes="112px"
-            className="object-cover object-[50%_12%]"
+            className="object-cover object-[50%_28%]"
             priority
           />
         </div>

@@ -142,7 +142,7 @@ const structuredData = {
       "@id": `${siteUrl}/#person`,
       name: "Álvaro Villena",
       url: siteUrl,
-      image: `${siteUrl}/gallery/StandingLookingAtCamera.JPG`,
+      image: `${siteUrl}/gallery/alvaro-retrato.jpg`,
       jobTitle: "Asesor senior de tecnología y producto",
       description:
         "Ayudo a empresas medianas chilenas a ordenar procesos, tomar mejores decisiones tecnológicas y preparar su operación para crecer.",
